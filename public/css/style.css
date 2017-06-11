@@ -38,6 +38,7 @@ button {
   box-shadow: 1px 1px 5px black;
   font-size: 1.1rem;
   z-index: 2;
+  transition: background-color 0.2s ease-in;
 }
 
 a {
@@ -52,4 +53,8 @@ a {
   min-width: 100%;
   min-height: 100%;
   z-index: 1;
+}
+button:hover{
+  background-color: rgba(48, 48, 48, 0.35);
+  cursor: pointer;
 }
