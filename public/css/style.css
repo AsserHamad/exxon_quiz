@@ -8,9 +8,7 @@
 }
 
 body {
-  /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  /*background-color: rgb(45, 141, 219);*/
 }
 
 header {
@@ -26,16 +24,20 @@ header {
   font-size: 1.4rem;
   text-shadow: 0.51px 0.51px 1.2px black;
 }
+header h2 , header p {
+  z-index: 2;
+}
 
 button {
   background: transparent;
-  border: 0.01rem solid ;
+  border: 0.01rem solid;
   border-radius: 3%;
-  padding:1.2em 4em;
+  padding: 1.2em 4em;
   margin: 1em;
   color: rgb(226, 228, 213);
   box-shadow: 1px 1px 5px black;
   font-size: 1.1rem;
+  z-index: 2;
 }
 
 a {
@@ -44,6 +46,10 @@ a {
 
 .overlay {
   position: absolute;
-  color: rgba(0, 0, 0, 0.38);
+    background-color: rgba(0, 0, 0, 0.35);
   top: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 1;
 }
