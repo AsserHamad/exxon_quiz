@@ -1,11 +1,7 @@
-var express = require('express'),
-    Article = require('mongoose').model('Article');
+var express = require('express');
 
-exports.home =  (req, res, next) => {
-  Article.find(function (err, articles) {
-    if (err) return next(err);
+exports.home = (req, res, next) => {
     res.render('index', {
       title: 'Generator-Express MVC'
     });
-  });
 };
