@@ -6,7 +6,8 @@ var config = {
   development: {
     root: rootPath,
     app: {
-      name: 'exxon-quiz'
+      name: 'exxon-quiz',
+      sessionSecret: "shhsecreeet"
     },
     port: process.env.PORT || 3000,
     db: 'mongodb://localhost/exxon-quiz-development'
@@ -15,7 +16,8 @@ var config = {
   test: {
     root: rootPath,
     app: {
-      name: 'exxon-quiz'
+      name: 'exxon-quiz',
+      sessionSecret: "shhsecreeet"
     },
     port: process.env.PORT || 3000,
     db: 'mongodb://localhost/exxon-quiz-test'
@@ -24,7 +26,8 @@ var config = {
   production: {
     root: rootPath,
     app: {
-      name: 'exxon-quiz'
+      name: 'exxon-quiz',
+      sessionSecret: "shhsecreeet"
     },
     port: process.env.PORT || 3000,
     db: 'mongodb://localhost/exxon-quiz-production'

@@ -1,0 +1,68 @@
+// Load the module dependencies
+const mongoose = require('mongoose'),
+      crypto = require('crypto'),
+      Schema = mongoose.Schema;
+
+// Define a new 'UserSchema'
+const UserSchema = new Schema({
+	firstName: String,
+	lastName: String,
+	email: {
+		type: String,
+    required: 'Email is required',
+    unique: true,
+    trime: true,
+		// Validate the email format
+		match: [/.+\@exxon\..+/, "Please fill a valid email address under exxon domain name"]
+	},
+	password: {
+		type: String,
+		required: 'Password is required',
+		// Validate the 'password' value length
+		validate: [
+			(password) => password && password.length > 6,
+			'Password should be longer'
+		]
+	},
+	salt: {
+		type: String
+	},
+	created: {
+		type: Date,
+		// Create a default 'created' value
+		default: Date.now
+	}
+});
+
+// Set the 'fullname' virtual property
+UserSchema.virtual('fullName').get(function() {
+	return this.firstName + ' ' + this.lastName;
+});
+
+// Use a pre-save middleware to hash the password
+UserSchema.pre('save', function(next) {
+	if (this.password) {
+		this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
+		this.password = this.hashPassword(this.password);
+	}
+	next();
+});
+
+// Create an instance method for hashing a password
+UserSchema.methods.hashPassword = function(password) {
+	return crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64');
+};
+
+// Create an instance method for authenticating user
+UserSchema.methods.authenticate = function(password) {
+	return this.password === this.hashPassword(password);
+};
+
+// Configure the 'UserSchema' to use getters and virtuals when transforming to JSON
+UserSchema.set('toJSON', {
+	getters: true,
+	virtuals: true
+});
+
+// Create the 'User' model out of the 'UserSchema'
+mongoose.model('User', UserSchema);

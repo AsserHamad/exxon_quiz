@@ -1,13 +1,14 @@
-var express = require('express');
-var glob = require('glob');
-
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var compress = require('compression');
-var methodOverride = require('method-override');
-var exphbs  = require('express-handlebars');
+const express = require('express'),
+      glob = require('glob'),
+      session = require('express-session'),
+      passport = require('passport'),
+      favicon = require('serve-favicon'),
+      logger = require('morgan'),
+      cookieParser = require('cookie-parser'),
+      bodyParser = require('body-parser'),
+      compress = require('compression'),
+      methodOverride = require('method-override'),
+      exphbs  = require('express-handlebars');
 
 module.exports = function(app, config) {
   var env = process.env.NODE_ENV || 'development';
@@ -28,6 +29,16 @@ module.exports = function(app, config) {
   app.use(bodyParser.urlencoded({
     extended: true
   }));
+
+  app.use(session({
+		saveUninitialized: true,
+		resave: true,
+		secret: config.app.sessionSecret
+	}));
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+
   app.use(cookieParser());
   app.use(compress());
   app.use(express.static(config.root + '/public'));
