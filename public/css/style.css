@@ -1,8 +1,60 @@
+/*html {
+  height: 100%;
+}*/
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+header {
+  background-image: url(https://static.pexels.com/photos/9796/car-refill-transportation-transport.jpg);
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 1.4rem;
+  text-shadow: 0.51px 0.51px 1.2px black;
+}
+header h2 , header p {
+  z-index: 2;
+}
+
+button {
+  background: transparent;
+  border: 0.01rem solid;
+  border-radius: 3%;
+  padding: 1.2em 4em;
+  margin: 1em;
+  color: rgb(226, 228, 213);
+  box-shadow: 1px 1px 5px black;
+  font-size: 1.1rem;
+  z-index: 2;
+  transition: background-color 0.2s ease-in;
 }
 
 a {
   color: #00B7FF;
+}
+
+.overlay {
+  position: absolute;
+    background-color: rgba(0, 0, 0, 0.35);
+  top: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 1;
+}
+button:hover{
+  background-color: rgba(48, 48, 48, 0.35);
+  cursor: pointer;
 }
