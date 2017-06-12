@@ -41,19 +41,18 @@ exports.signup = (req, res) => {
 			// Remove sensitive data before login
 			user.password = undefined;
 			user.salt = undefined;
-      res.status(200).send("success!");
-      // TODO: 
-			// // Login the user
-			// req.login(user, function(err) {
-			// 	if (err) {
-			// 		res.status(400).send(err);
-			// 	} else {
-			// 		res.json(user);
-			// 	}
-			// });
+			// Login the user
+			req.login(user, function(err) {
+				if (err) {
+					res.status(400).send(err);
+				} else {
+					res.json(user);
+				}
+			});
 		}
 	});
 }
+
 
 exports.list = (req, res) => {
   User.find({},(err, users) => {
