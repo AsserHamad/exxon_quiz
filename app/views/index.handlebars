@@ -1,8 +1,35 @@
-<header>
-  <div class="overlay">
+
+  <div class="container-fluid">
+    <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Exxon_Mobil_Logo.svg/2000px-Exxon_Mobil_Logo.svg.png" class="center-block" alt="ExxonMobil Logo">
+    <div class="row">
+      <div class="col-xs-6">
+        <button type="`button`" class="butt center-block" name="button" data-toggle="modal" href="#login_div">Login</button>
+      </div>
+      <div class="col-xs-6">
+        <button type="`button`" class="butt center-block" name="button">Register</button>
+      </div>
+    </div>
+
+      <div id="login_div" class="modal fade shake page" role="dialog">
+        <div class="modal-dialog">
+        <div class="modal-content login_modal">
+
+          <div class="modal-body">
+            <h1 class="modal-header">Login</h1><br />
+          <span ng-style="{'color':'#cc0000'}">
+            {{error_login}}
+          </span>
+            <br />
+            <form action="/signin" method="post" novalidate>
+             <input class="form-control login_search" name="login_user" placeholder="Username" autofocus required /><br />
+             <a style="float:right;cursor:pointer" data-toggle="modal" data-target="#forgot-password">Forgot your password?</a>
+
+             <input class="form-control login_search" name="login_password" placeholder="Password" type="password" required /><br />
+             <button class="home_submit btn" type="submit" data-dismiss="modal">Login</button><br />
+            </form>
+          </div>
+        </div>
+       </div>
+    </div>
+
   </div>
-  <h2>Hello Mr. Owner of ExxonMobil</h2>
-  <p>Welcome to our beautiful website <br> Made with love by Mushroom Software</p>
-  <button type="button" name="button" class="signup">Sign up</button>
-  <button type="button" name="button" class="login">Login</button>
-</header>
