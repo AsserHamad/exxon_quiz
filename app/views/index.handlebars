@@ -20,12 +20,12 @@
             {{error_login}}
           </span>
             <br />
-            <form action="/signin" method="post" novalidate>
-             <input class="form-control login_search" name="login_email" placeholder="Email" autofocus required /><br />
+            <form action='/signin' method='POST' novalidate>
+             <input class="form-control login_search" name="email" placeholder="Email" autofocus required /><br />
              <a style="float:right;cursor:pointer" data-toggle="modal" data-target="#forgot-password">Forgot your password?</a>
 
-             <input class="form-control login_search" name="login_password" placeholder="Password" type="password" required /><br />
-             <button class="home_submit btn" type="submit" data-dismiss="modal">Login</button><br />
+             <input class="form-control login_search" name="password" placeholder="Password" type="password" required /><br />
+             <button class="home_submit btn" type="submit">Login</button><br />
             </form>
           </div>
         </div>
@@ -36,18 +36,18 @@
       <div class="modal-dialog">
       <div class="modal-content register_modal">
 
-        <div class="modal-body">
+        <div  id="modal" class="modal-body">
           <h1 class="modal-header">Register</h1><br />
         <span ng-style="{'color':'#cc0000'}">
           {{error_login}}
         </span>
           <br />
-          <form action="/signup" method="post" novalidate>
+          <form id="yo" action="/signup" method="POST" novalidate>
             <input class="form-control register_search" name="register_firstName" placeholder="First Name" autofocus required /><br />
             <input class="form-control register_search" name="register_lastName" placeholder="Last Name" autofocus required /><br />
-            <input class="form-control register_search" name="register_email" placeholder="Email" autofocus required /><br />
-           <input class="form-control register_search" name="register_password" placeholder="Password" type="password" required /><br />
-           <button class="home_submit btn" type="submit" data-dismiss="modal">Sign Up</button><br />
+            <input class="form-control register_search" name="email" placeholder="Email" autofocus required /><br />
+           <input class="form-control register_search" name="password" placeholder="Password" type="password" required /><br />
+           <button class="home_submit btn" type="submit" >Sign Up</button><br />
           </form>
         </div>
       </div>

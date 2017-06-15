@@ -8,11 +8,17 @@ module.exports = (app) => {
 
   app.route('/signin')
   // .get(users.renderSignin) TODO
-  .post(passport.authenticate('local', {
-      successRedirect: '/',
-			failureRedirect: '/signin',
-			failureFlash: true
-  }));
+  .post((req, res) => {
+    console.log(req.body);
+    passport.authenticate('local', (err, user, info) => {
+      if(err) return res.json({err: err});
+      else if (info) {
+        return res.json({info: info});
+      } else {
+        res.redirect('/');
+      }
+    })(req, res);
+  })
 
   app.route('/users')
   .get(users.list);

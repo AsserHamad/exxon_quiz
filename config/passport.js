@@ -35,14 +35,14 @@ module.exports = function() {
   			// If a user was not found, continue to the next middleware with an error message
   			if (!user) {
   				return done(null, false, {
-  					message: 'Unknown user'
+  					message: 'Unknown User'
   				});
   			}
 
   			// If the passport is incorrect, continue to the next middleware with an error message
   			if (!user.authenticate(password)) {
   				return done(null, false, {
-  					message: 'Invalid password'
+  					message: 'Invalid Password'
   				});
   			}
 
