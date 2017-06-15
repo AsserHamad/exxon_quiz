@@ -9,36 +9,37 @@
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  /*background-color: INLINE STY;ING IN main.handelbars ;*/
+  /*background-color: INLINE STYlING IN main.handelbars ;*/
   height: 100%;
   background-size: cover;
 }
 
 header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: rgb(255, 255, 255);
-  font-size: 1.4rem;
+  color: #FE000C;
+  font-size: 2rem;
   text-shadow: 0.51px 0.51px 1.2px black;
-}
-header h2 , header p {
-  z-index: 2;
 }
 
 button {
-  background: transparent;
-  border: 0.01rem solid;
+  background-color: white;
+  border-bottom: 0.7rem solid;
+  border-color: white;
   border-radius: 3%;
   padding: 1.2em 4em;
   margin: 1em;
-  color: rgb(226, 228, 213);
+  color: white;
   box-shadow: 1px 1px 5px black;
-  font-size: 1.1rem;
+  font-size: 2rem;
   z-index: 2;
   transition: background-color 0.2s ease-in;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  /*animation-direction: alternate;*/
 }
 
 a {
@@ -60,7 +61,7 @@ a {
   z-index: 1;
 }
 button:hover{
-  background-color: rgba(48, 48, 48, 0.35);
+  background-color: rgba(241, 7, 7, 0.35);
   cursor: pointer;
 }
 
