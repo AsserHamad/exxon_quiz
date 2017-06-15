@@ -9,12 +9,12 @@
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: lightblue ;
+  height: 100%;
+  background-size: cover;
 }
 
 header {
-  background-image: url(https://static.pexels.com/photos/9796/car-refill-transportation-transport.jpg);
-  height: 100vh;
-  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,10 +44,15 @@ button {
 a {
   color: #00B7FF;
 }
+.glowing{
+  filter: drop-shadow(0 0px 15px blue);
+  transform: translateY(-700px);
+
+}
 
 .overlay {
   position: absolute;
-    background-color: rgba(0, 0, 0, 0.35);
+    /*background-color: rgba(0, 0, 0, 0.35);*/
   top: 0;
   bottom: 0;
   min-width: 100%;
@@ -57,4 +62,14 @@ a {
 button:hover{
   background-color: rgba(48, 48, 48, 0.35);
   cursor: pointer;
+}
+
+.butt{
+  background-color:transparent
+}
+#logo{
+  width:40%;
+  margin-top:17%;
+  margin-bottom:7%;
+  transition-duration:0.4s;
 }
