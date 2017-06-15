@@ -10,7 +10,7 @@ const QuestionSchema = new Schema({
   },
   choices: {
     type: [String],
-    validate: [(val) => val==4 , 'Please enter 4 choices!']
+    validate: [(val) => val == 4 , 'Please enter 4 choices!']
   },
   correctAnswer: {
     type: String,

@@ -3,7 +3,7 @@ var gulp = require('gulp'),
   plumber = require('gulp-plumber'),
   livereload = require('gulp-livereload'),
   config = require('./config/config'),
-  {MongoClient} = require('mongodb')  ;
+  {MongoClient} = require('mongodb');
 
 gulp.task('develop', function () {
   livereload.listen();

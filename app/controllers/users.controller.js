@@ -1,7 +1,7 @@
 const User = require('mongoose').model('User'),
       passport = require('passport');
 
-const getErrorMessage = function(err) {
+const getErrorMessage = function(err, unique) {
 	// Define the error message variable
 	let message = '';
 
@@ -11,7 +11,7 @@ const getErrorMessage = function(err) {
 			// If a unique index error occurs set the message error
 			case 11000:
 			case 11001:
-				message = 'An account with this email already exists';
+				message = unique;
 				break;
 			// If a general error occurs set the message error
 			default:
@@ -35,7 +35,7 @@ exports.signup = (req, res) => {
 	user.save((err) => {
 		if (err) {
 			return res.status(400).send({
-				message: getErrorMessage(err)
+				message: getErrorMessage(err, 'An account with this email already exists')
 			});
 		} else {
 			// Remove sensitive data before login

@@ -19,7 +19,7 @@ module.exports = (app) => {
   				if (err) {
   					res.status(400).json({err: err});
   				} else {
-            res.redirect('/');
+            res.json({success:success});
   				}
   			});
       }
