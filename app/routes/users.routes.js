@@ -15,7 +15,13 @@ module.exports = (app) => {
       else if (info) {
         return res.json({info: info});
       } else {
-        res.redirect('/');
+        req.login(user, function(err) {
+  				if (err) {
+  					res.status(400).json({err: err});
+  				} else {
+            res.redirect('/');
+  				}
+  			});
       }
     })(req, res);
   })
