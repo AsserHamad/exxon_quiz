@@ -1,7 +1,9 @@
 <header>
   <div class="container-fluid" style="display:flex; flex-direction:column">
     <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Exxon_Mobil_Logo.svg/2000px-Exxon_Mobil_Logo.svg.png" class="center-block glowing" alt="ExxonMobil Logo">
-    <h1>{{user}}</h1>
+    {{#if user}}
+      <h1>{{user.firstName}} {{user.lastName}}</h1>
+    {{/if}}
     <div class="row">
       <div class="col-xs-6">
         <button type="`button`" class="butt center-block animated  tada" name="button" data-toggle="modal" href="#login_div">Login</button>
@@ -15,13 +17,12 @@
         <div class="modal-dialog">
         <div class="modal-content login_modal">
 
-          <div class="modal-body">
+          <div id="login_modal" class="modal-body">
             <h1 class="modal-header">Login</h1><br />
-          <span ng-style="{'color':'#cc0000'}">
-            {{error_login}}
+          <span id="login_error" style="color:#cc0000">
           </span>
             <br />
-             <input id="login_email" class="form-control login_search" name="email" placeholder="Email" autofocus required /><br />
+             <input id="login_email" class="form-control login_search" name="email" placeholder="example@exxon.com" autofocus required /><br />
              <a style="float:right;cursor:pointer" data-toggle="modal" data-target="#forgot-password">Forgot your password?</a>
              <input id="login_password" class="form-control login_search" name="password" placeholder="Password" type="password" required /><br />
              <button id="login_btn" class="btn" >Login</button><br />
@@ -50,7 +51,6 @@
         </div>
       </div>
      </div>
-  </div>
-
-  </div>
-  </header>
+   </div>
+ </div>
+</header>

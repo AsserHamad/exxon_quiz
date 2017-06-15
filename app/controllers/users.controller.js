@@ -46,11 +46,28 @@ exports.signup = (req, res) => {
 				if (err) {
 					res.status(400).send(err);
 				} else {
-					res.json(user);
+					res.json({success: 'success'});
 				}
 			});
 		}
 	});
+}
+
+exports.signin = (req, res) => {
+  passport.authenticate('local', (err, user, info) => {
+    if(err) return res.json({err: err});
+    else if (info) {
+      return res.json({info: info});
+    } else {
+      req.login(user, function(err) {
+        if (err) {
+          res.status(400).json({err: err});
+        } else {
+          res.json({success:'success'});
+        }
+      });
+    }
+  })(req, res);
 }
 
 

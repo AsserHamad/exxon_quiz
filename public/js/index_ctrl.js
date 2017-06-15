@@ -1,13 +1,26 @@
 $(document).ready(function(){
+
+  $("#login_modal").on('keypress', (e) => {
+    if(e.which == 13)
+      $("#login_btn").click();
+  });
+
   var glowy = false;
   setTimeout(function(){$("#logo").removeClass("glowing");},1000);
 
   $("#login_btn").click(function(){
-    alert("YOU HAVE CLICKED WHICH SHALL NOT BE CLICKEN");
-    $.post('/signin',{email:$("#login_email").val(), password:$("#login_password").val()},function(res){
+    const email = $("#login_email").val(),
+          password = $("#login_password").val(),
+          credentials = {email: email, password: password}
+
+    $.post('/signin', credentials, (res) => {
       console.log(res);
+      $("#login_error").empty();
       if(res.success)
       window.location = '/';
+      else if(res.info || res.err) {
+        $("#login_error").html(res.info.message || JSON.stringify(res.err));
+      }
     })
   })
 });
