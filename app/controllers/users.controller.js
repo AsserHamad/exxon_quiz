@@ -63,7 +63,7 @@ exports.signin = (req, res) => {
         if (err) {
           res.status(400).json({err: err});
         } else {
-          res.json({success:'success'});
+          res.json({success:'success'}); // TODO: render the new view (res.render('newView',{user:user}))
         }
       });
     }
