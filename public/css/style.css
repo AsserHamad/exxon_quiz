@@ -85,3 +85,7 @@ button:hover {
   margin-bottom: 7%;
   transition-duration: 0.4s;
 }
+
+.right {
+  float: right !important;
+}

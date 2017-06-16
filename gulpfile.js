@@ -2,6 +2,7 @@ var gulp = require('gulp'),
   nodemon = require('gulp-nodemon'),
   plumber = require('gulp-plumber'),
   livereload = require('gulp-livereload'),
+  async = require('async'),
   config = require('./config/config'),
   {MongoClient} = require('mongodb'),
   {argv: args} = require('yargs');
@@ -61,5 +62,62 @@ gulp.task('mkadmin', () => {
         process.exit();
       })
     })
+
+gulp.task('genUsers', () => {
+  let success = 0,
+      failure = 0;
+
+  let saves = [];
+
+  for (let i = 0 ; i<50; i++) {
+
+    var accepted = (Math.random()<=0.5)?true:false;
+    const userSeed = new User({
+      firstName: `firstName${i}`,
+      lastName: `lastName${i}`,
+      email: `user${i}@exxon.com`,
+      role: 'user',
+      accepted: accepted,
+      password: `userpass${i}`
+    });
+
+      ((user, i)=> {
+        user.save((err, user) => {
+        if(!err && user){
+          success++;
+        } else {
+          failure++;
+        }
+      })
+    })(userSeed, i)
+
+    accepted = (Math.random()<=0.5)?true:false;
+
+    const adminSeed = new User({
+      firstName: `firstName${i}`,
+      lastName: `lastName${i}`,
+      email: `admin${i}@exxon.com`,
+      role: 'admin',
+      accepted: accepted,
+      password: `adminpass${i}`
+    });
+
+    ((admin, i)=> {
+      admin.save((err, user) => {
+      if(!err && user){
+        success++;
+      } else {
+        console.log(err);
+        failure++;
+      }
+      if(i == 49) {
+      console.log('bye!');
+      process.exit();
+    }
+    })
+  })(adminSeed, i)
+}
+
+})
 
 gulp.task('default', ['develop']);
