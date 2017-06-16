@@ -15,6 +15,14 @@ const UserSchema = new Schema({
 		// Validate the email format
 		match: [/.+\@exxon\..+/, "Please fill a valid email address under exxon domain name"]
 	},
+  role: {
+    type: String,
+    enum: ["user", "admin"]
+  },
+  accepted: {
+    type: Boolean,
+    default: false
+  },
 	password: {
 		type: String,
 		required: 'Password is required',
