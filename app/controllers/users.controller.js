@@ -46,7 +46,8 @@ exports.signup = (req, res) => {
 				if (err) {
 					res.status(400).send(err);
 				} else {
-					res.json({success: 'success'});
+					// res.json({success: 'success'});
+          res.send('Please wait for your account to be accepted by an admin');
 				}
 			});
 		}
@@ -54,6 +55,7 @@ exports.signup = (req, res) => {
 }
 
 exports.signin = (req, res) => {
+  console.log('hiii');
   passport.authenticate('local', (err, user, info) => {
     if(err) return res.json({err: err});
     else if (info) {
@@ -61,9 +63,13 @@ exports.signin = (req, res) => {
     } else {
       req.login(user, function(err) {
         if (err) {
+          console.log(err);
           res.status(400).json({err: err});
+        } else if(!user.accepted) {
+           // TODO: render the new view (res.render('newView',{user:user}))
+           res.json({accepted: false, not_accepted: 'Please wait for your account to be accepted by an admin'});
         } else {
-          res.json({success:'success'}); // TODO: render the new view (res.render('newView',{user:user}))
+          res.json({accepted: true, user: user});
         }
       });
     }

@@ -1,13 +1,14 @@
 var path = require('path'),
-    rootPath = path.normalize(__dirname + '/..'),
-    env = process.env.NODE_ENV || 'development';
+  rootPath = path.normalize(__dirname + '/..'),
+  env = process.env.NODE_ENV || 'development';
 
 var config = {
   development: {
     root: rootPath,
     app: {
+      name: 'exxon-quiz',
       sessionSecret: "shhsecreeet",
-      name: 'exxon-quiz'
+      adminPass: "admin55"
     },
     port: process.env.PORT || 3000,
     db: 'mongodb://localhost/exxon-quiz-development'
@@ -16,8 +17,9 @@ var config = {
   test: {
     root: rootPath,
     app: {
+      name: 'exxon-quiz',
       sessionSecret: "shhsecreeet",
-      name: 'exxon-quiz'
+      adminPass: "admin55"
     },
     port: process.env.PORT || 3000,
     db: 'mongodb://localhost/exxon-quiz-test'
@@ -26,8 +28,9 @@ var config = {
   production: {
     root: rootPath,
     app: {
+      name: 'exxon-quiz',
       sessionSecret: "shhsecreeet",
-      name: 'exxon-quiz'
+      adminPass: "admin55"
     },
     port: process.env.PORT || 3000,
     db: 'mongodb://localhost/exxon-quiz-production'

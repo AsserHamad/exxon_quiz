@@ -22,10 +22,15 @@ $(document).ready(function() {
     $.post('/signin', credentials, (res) => {
       console.log(res);
       $("#login_error").empty();
-      if (res.success)
-        window.location = '/';
-      else if (res.info || res.err) {
+      if(res.accepted)
+      window.location = '/';
+      else if(res.info || res.err) {
+
         $("#login_error").html(res.info.message || JSON.stringify(res.err));
+      }
+      else if(not_accepted) {
+        // TODO: hanlde logic here :
+        alert('await acceptance mate!');
       }
     })
   })
