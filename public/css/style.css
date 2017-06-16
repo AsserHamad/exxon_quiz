@@ -25,14 +25,23 @@ header {
   text-shadow: 0.51px 0.51px 1.2px black;
 }
 
+.quizmania {
+  color: #FE000C;
+  text-shadow: 0 0 1px #FE000C, 0 0 1px #FE000C;
+  font-family: 'Pangolin', cursive;
+  font-size: 3em;
+  margin: 0;
+  padding: 0;
+}
+
 button {
-  background-color: white;
+  /*background-color: white;*/
   border-bottom: 0.7rem solid;
   border-color: white;
   border-radius: 3%;
   padding: 1.2em 4em;
   margin: 1em;
-  color: white;
+  color: #FE000C;
   box-shadow: 1px 1px 5px black;
   font-size: 2rem;
   z-index: 2;
@@ -45,32 +54,34 @@ button {
 a {
   color: #00B7FF;
 }
-.glowing{
+
+.glowing {
   filter: drop-shadow(0 0px 15px blue);
   transform: translateY(-700px);
-
 }
 
 .overlay {
   position: absolute;
-    /*background-color: rgba(0, 0, 0, 0.35);*/
+  /*background-color: rgba(0, 0, 0, 0.35);*/
   top: 0;
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
   z-index: 1;
 }
-button:hover{
+
+button:hover {
   background-color: rgba(241, 7, 7, 0.35);
   cursor: pointer;
 }
 
-.butt{
-  background-color:transparent
+.butt {
+  background-color: transparent
 }
-#logo{
-  width:40%;
-  margin-top:17%;
-  margin-bottom:7%;
-  transition-duration:0.4s;
+
+#logo {
+  width: 40%;
+  margin-top: 17%;
+  margin-bottom: 7%;
+  transition-duration: 0.4s;
 }
