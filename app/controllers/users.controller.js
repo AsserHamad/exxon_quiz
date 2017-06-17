@@ -90,3 +90,29 @@ exports.list = (req, res) => {
     }
   })
 }
+
+function authorized(user) {
+  return user && user.accepted;
+}
+
+exports.accept = (req, res) => {
+  console.log(req.params.userID);
+  if(authorized(req.user) && req.user.role == 'admin')
+    User.findOne({_id: req.params.userID}, (err, user) => {
+      if(err) {
+        console.log('err from acceptance' + err);
+        res.status(500).send('something went wrong');
+      } else if(!user) {
+        res.status(404).send("unkown user!");
+      }
+       else {
+         user.accepted = true;
+         user.save(() => {
+           res.send("Accepted!");
+         })
+       }
+    })
+    else {
+      res.status(400).send("Unauothorized!");
+    }
+}

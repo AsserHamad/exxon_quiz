@@ -28,7 +28,7 @@ $(document).ready(function() {
 
         $("#login_error").html(res.info.message || JSON.stringify(res.err));
       }
-      else if(not_accepted) {
+      else if(res.not_accepted) {
         // TODO: hanlde logic here :
         alert('await acceptance mate!');
       }
