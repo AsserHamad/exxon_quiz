@@ -35,7 +35,7 @@ $(document).ready(function() {
     })
   })
   $('.quizmania').funnyText({
-  		speed: 400,
+  		speed: 250,
   		borderColor: 'none',
   		activeColor: 'white',
   		color: 'white',
