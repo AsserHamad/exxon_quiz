@@ -66,12 +66,12 @@ UserSchema.methods.authenticate = function(password) {
 	return this.password === this.hashPassword(password);
 };
 
-UserSchema.statics.findOneSafely = (query, done) => {
-  this.findOne(query,'-id -salt -password', done);
+UserSchema.statics.findOneSafely = function (query, done) {
+  this.findOne(query,'-_id -salt -password', done);
 }
 
-UserSchema.statics.findSafely = (query, done) => {
-  this.find(query, '-id -salt -password', done);
+UserSchema.statics.findSafely = function(query, done) {
+  this.find(query, '-_id -salt -password', done);
 }
 
 // Configure the 'UserSchema' to use getters and virtuals when transforming to JSON

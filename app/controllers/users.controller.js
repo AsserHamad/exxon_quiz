@@ -77,16 +77,12 @@ exports.signin = (req, res) => {
 
 
 exports.list = (req, res) => {
-  User.find({},(err, users) => {
+  User.findSafely({},(err, users) => {
     if(err)
       res.status(500).send(err);
-    else{
-      users.forEach((user) => {
-        user.password = undefined;
-        user.salt = undefined;
-      })
+    else
       res.json(users);
-    }
+
   })
 }
 
