@@ -69,7 +69,7 @@ $("#register_div").on('keyup', (e) => {
     });
 
   $('.quizmania').funnyText({
-  		speed: 400,
+  		speed: 250,
   		borderColor: 'none',
   		activeColor: 'white',
   		color: 'white',
