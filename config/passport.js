@@ -47,6 +47,8 @@ module.exports = function() {
   			}
 
   			// Otherwise, continue to the next middleware with the user object
+        user.salt = null;
+        user.password = null;
   			return done(null, user);
   		});
   	})));

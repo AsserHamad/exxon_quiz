@@ -34,7 +34,7 @@ exports.signup = (req, res) => {
 	// Try saving the User
 	user.save((err) => {
 		if (err) {
-			return res.status(400).send({
+			return res.status(401).json({
 				message: getErrorMessage(err, 'An account with this email already exists')
 			});
 		} else {
@@ -47,7 +47,7 @@ exports.signup = (req, res) => {
 					res.status(400).send(err);
 				} else {
 					// res.json({success: 'success'});
-          res.send('Please wait for your account to be accepted by an admin');
+          res.status(200).json({accepted: false, not_accepted:'Thx for signing up, now wait for the acceptance ;)'});
 				}
 			});
 		}
@@ -55,11 +55,10 @@ exports.signup = (req, res) => {
 }
 
 exports.signin = (req, res) => {
-  console.log('hiii');
   passport.authenticate('local', (err, user, info) => {
     if(err) return res.json({err: err});
     else if (info) {
-      return res.json({info: info});
+      return res.status(400).json({info: info});
     } else {
       req.login(user, function(err) {
         if (err) {

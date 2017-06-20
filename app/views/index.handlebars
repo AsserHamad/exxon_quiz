@@ -1,8 +1,8 @@
 <header>
   <div class="container-fluid" style="display:flex; flex-direction:column">
-    {{#if user}}
-      <a style="float:right" href="/logout"> <button type="button" class="btn btn-primary" name="button">Logout</button></a>
-      {{/if}}
+      {{#if user}}
+        <a style="float:right" href="/logout"> <button type="button" class="btn btn-primary" name="button">Logout</button></a>
+        {{/if}}
 
     <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Exxon_Mobil_Logo.svg/2000px-Exxon_Mobil_Logo.svg.png" class="center-block glowing" alt="ExxonMobil Logo">
 
@@ -29,10 +29,13 @@
           <span id="login_error" style="color:#cc0000">
           </span>
             <br />
+            <form id="login_form" >
              <input id="login_email" class="form-control login_search" name="email" placeholder="example@exxon.com" autofocus required /><br />
              <a style="float:right;cursor:pointer" data-toggle="modal" data-target="#forgot-password">Forgot your password?</a>
              <input id="login_password" class="form-control login_search" name="password" placeholder="Password" type="password" required /><br />
-             <button id="login_btn" class="btn" >Login</button><br />
+             <input id="login_btn" type="button" value="Login" class="btn"/>
+           </form>
+
           </div>
         </div>
        </div>
@@ -57,7 +60,7 @@
               Normal <input type="radio" name="role" value="user">
               Admin <input type="radio" name="role" value="admin">
             </div>
-           <button class="home_submit btn" type="submit" >Sign Up</button><br />
+           <button id="signup_btn" class="home_submit btn" type="submit" >Sign Up</button><br />
           </form>
         </div>
       </div>
