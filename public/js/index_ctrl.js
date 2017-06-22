@@ -24,7 +24,7 @@ $("#register_div").on('keyup', (e) => {
   var glowy = false;
   setTimeout(function() {
     $("#logo").removeClass("glowing");
-  }, 1000);
+  }, 0);
 
 
   $("#signup_btn").click(function() {

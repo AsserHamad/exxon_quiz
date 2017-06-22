@@ -6,14 +6,35 @@
   padding: 0;
   margin: 0;
 }
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   /*background-color: INLINE STYlING IN main.handelbars ;*/
   height: 100%;
-  background-size: cover;
-}
+  width:100%;
 
+  /*background: linear-gradient(175deg, #0000FF, #ff0000);
+  background-size: 120% 150%;
+  -webkit-animation:gradient 15s ease infinite;
+  animation: gradient 15s ease infinite;*/
+  /*background-color: #013A6B;*/
+  background-image: -webkit-linear-gradient(30deg, #013A6B 50%, #004E95 50%);
+
+}
+/*@keyframes gradient {
+    0%{background-position:54% 0%}
+    50%{background-position:54% 50%}
+    100%{background-position:54% 0%}
+}*/
+@keyframes gradient {
+    0%{background-position:54% 0%}
+    50%{background-position:54% 50%}
+    100%{background-position:54% 0%}
+}
 header {
   display: flex;
   flex-direction: row;
@@ -23,6 +44,31 @@ header {
   color: #FE000C;
   font-size: 2rem;
   /*text-shadow: 0.51px 0.51px 1.2px black;*/
+
+
+}
+
+.login_form{
+  padding:1% 0% 1% 1%;
+  border:none;
+  border-radius:5px;
+  font-size:140%;
+  transition-duration: 0.1s;
+  box-shadow:2px 2px 30px rgba(255,0,0,0.7);
+  animation: bla 3s ease infinite;
+  background-color: rgba(173,216,230,0.2);
+  color:white;
+}
+.login_form:focus{
+  box-shadow:2px 2px 30px rgba(255,255,255,0.7);
+}
+@keyframes bla{
+  0%{box-shadow:2px 2px 5px rgba(0,0,0,0.7);}
+  50%{box-shadow:2px 2px 50px rgba(255,0,0,0.7);}
+  100%{box-shadow:2px 2px 5px rgba(0,0,0,0.7);}
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: white;
 }
 
 .quizmania {
@@ -34,8 +80,7 @@ header {
   padding: 0;
 }
 
-button {
-  /*background-color: white;*/
+/*button {
   border-bottom: 0.7rem solid;
   border-color: white;
   border-radius: 3%;
@@ -48,7 +93,45 @@ button {
   transition: background-color 0.2s ease-in;
   animation-duration: 5s;
   animation-iteration-count: infinite;
-  /*animation-direction: alternate;*/
+}*/
+
+#login_btn{
+  padding:5% 40% 5% 40%;
+  color:white;
+  background-color:red;
+  animation: changing_color 0.5s ease infinite;
+  border-radius:2px;
+  border:none;
+  box-shadow: 1px 1px 5px black;
+}
+@keyframes changing_color{
+  0%{background-image: -webkit-linear-gradient(30deg, #013A6B 0%, red 0%);}
+  5%{background-image: -webkit-linear-gradient(30deg, #013A6B 5%, red 5%);}
+  10%{background-image: -webkit-linear-gradient(30deg, #013A6B 10%, red 10%);}
+  15%{background-image: -webkit-linear-gradient(30deg, #013A6B 15%, red 15%);}
+  20%{background-image: -webkit-linear-gradient(30deg, #013A6B 20%, red 20%);}
+  25%{background-image: -webkit-linear-gradient(30deg, #013A6B 25%, red 25%);}
+  30%{background-image: -webkit-linear-gradient(30deg, #013A6B 30%, red 30%);}
+  35%{background-image: -webkit-linear-gradient(30deg, #013A6B 35%, red 35%);}
+  40%{background-image: -webkit-linear-gradient(30deg, #013A6B 40%, red 40%);}
+  45%{background-image: -webkit-linear-gradient(30deg, #013A6B 45%, red 45%);}
+  50%{background-image: -webkit-linear-gradient(30deg, #013A6B 50%, red 50%);}
+  55%{background-image: -webkit-linear-gradient(30deg, #013A6B 55%, red 55%);}
+  60%{background-image: -webkit-linear-gradient(30deg, #013A6B 60%, red 60%);}
+  65%{background-image: -webkit-linear-gradient(30deg, #013A6B 65%, red 65%);}
+  70%{background-image: -webkit-linear-gradient(30deg, #013A6B 70%, red 70%);}
+  75%{background-image: -webkit-linear-gradient(30deg, #013A6B 75%, red 75%);}
+  80%{background-image: -webkit-linear-gradient(30deg, #013A6B 80%, red 80%);}
+  85%{background-image: -webkit-linear-gradient(30deg, #013A6B 85%, red 85%);}
+  90%{background-image: -webkit-linear-gradient(30deg, #013A6B 90%, red 90%);}
+  95%{background-image: -webkit-linear-gradient(30deg, #013A6B 95%, red 95%);}
+  100%{background-image: -webkit-linear-gradient(30deg, #013A6B 100%, red 100%);}
+}
+#reg_btn{
+  padding:5% 40% 5% 40%;
+  background-color:red;
+  animation: changing_color 0.5s ease infinite;
+  color:white;
 }
 
 a {
@@ -70,20 +153,15 @@ a {
   z-index: 1;
 }
 
-button:hover {
-  background-color: rgba(241, 7, 7, 0.35);
-  cursor: pointer;
-}
-
 .butt {
   background-color: transparent
 }
 
 #logo {
   width: 40%;
-  margin-top: 17%;
+  margin-top: 10%;
   margin-bottom: 7%;
-  transition-duration: 0.4s;
+  transition-duration: 0.8s;
 }
 
 .right {
