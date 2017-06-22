@@ -102,7 +102,26 @@ header {
   animation: changing_color 0.5s ease infinite;
   border-radius:2px;
   border:none;
-  box-shadow: 1px 1px 5px black;
+  box-shadow: 0px 1px 10px rgba(0,0,0,0.5);
+  transition-duration:0.3s;
+}
+#login_btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.8);
+}
+#reg_btn{
+  padding:5% 40% 5% 40%;
+  color:white;
+  background-color:red;
+  animation: changing_color 0.5s ease infinite;
+  border-radius:2px;
+  border:none;
+  box-shadow: 0px 1px 10px rgba(0,0,0,0.5);
+  transition-duration:0.3s;
+}
+#reg_btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.8);
 }
 @keyframes changing_color{
   0%{background-image: -webkit-linear-gradient(30deg, #013A6B 0%, red 0%);}
@@ -126,12 +145,6 @@ header {
   90%{background-image: -webkit-linear-gradient(30deg, #013A6B 90%, red 90%);}
   95%{background-image: -webkit-linear-gradient(30deg, #013A6B 95%, red 95%);}
   100%{background-image: -webkit-linear-gradient(30deg, #013A6B 100%, red 100%);}
-}
-#reg_btn{
-  padding:5% 40% 5% 40%;
-  background-color:red;
-  animation: changing_color 0.5s ease infinite;
-  color:white;
 }
 
 a {
