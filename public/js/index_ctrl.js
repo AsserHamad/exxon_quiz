@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  var checked = false;
 
   $("#login_div").on('keyup', (e) => {
     if (e.keyCode === 13){
@@ -10,6 +11,24 @@ $(document).ready(function() {
     }
 });
 
+$("#reg_text").hide();
+$(".reg_fields").hide();
+$("#check").on('click',function(){
+  if(!checked){
+    // $("#reg_text").show('slide', {direction: 'right'}, 1000);
+    // $("#login_text").hide('slide', {direction: 'right'}, 1000);
+    $("#reg_text").show();
+    $("#login_text").hide();
+    $(".reg_fields").slideDown();
+  }else{
+    // $("#login_text").show('slide', {direction: 'left'}, 1000);
+    // $("#reg_text").hide('slide', {direction: 'left'}, 1000);
+    $("#login_text").show();
+    $("#reg_text").hide();
+    $(".reg_fields").slideUp();
+  }
+  checked=!checked;
+});
 
 $("#register_div").on('keyup', (e) => {
   if (e.keyCode === 13){

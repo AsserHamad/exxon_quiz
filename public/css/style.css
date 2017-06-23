@@ -98,8 +98,7 @@ header {
 #login_btn{
   padding:5% 40% 5% 40%;
   color:white;
-  background-color:red;
-  animation: changing_color 0.5s ease infinite;
+  background-image: -webkit-linear-gradient(30deg, #013A6B 0%, red 0%);
   border-radius:2px;
   border:none;
   box-shadow: 0px 1px 10px rgba(0,0,0,0.5);
@@ -110,10 +109,10 @@ header {
   box-shadow: 0px 3px 10px rgba(0,0,0,0.8);
 }
 #reg_btn{
-  padding:5% 40% 5% 40%;
+  padding:2% 10% 2% 10%;
   color:white;
   background-color:red;
-  animation: changing_color 0.5s ease infinite;
+  background-image: -webkit-linear-gradient(30deg, #013A6B 0%, red 0%);
   border-radius:2px;
   border:none;
   box-shadow: 0px 1px 10px rgba(0,0,0,0.5);
@@ -123,7 +122,7 @@ header {
   transform: translateY(-2px);
   box-shadow: 0px 3px 10px rgba(0,0,0,0.8);
 }
-@keyframes changing_color{
+/*@keyframes changing_color{
   0%{background-image: -webkit-linear-gradient(30deg, #013A6B 0%, red 0%);}
   5%{background-image: -webkit-linear-gradient(30deg, #013A6B 5%, red 5%);}
   10%{background-image: -webkit-linear-gradient(30deg, #013A6B 10%, red 10%);}
@@ -145,7 +144,7 @@ header {
   90%{background-image: -webkit-linear-gradient(30deg, #013A6B 90%, red 90%);}
   95%{background-image: -webkit-linear-gradient(30deg, #013A6B 95%, red 95%);}
   100%{background-image: -webkit-linear-gradient(30deg, #013A6B 100%, red 100%);}
-}
+}*/
 
 a {
   color: #00B7FF;
@@ -179,4 +178,20 @@ a {
 
 .right {
   float: right !important;
+}
+
+#check{
+  border-radius:50%;
+  padding:0.5%;
+  top: 50%;
+  background-color:black;
+  box-shadow:0px 0px 15px white;
+  transition-duration:0.2s;
+}
+#check:hover{
+  background-color:#333;
+}
+#check:focus{
+  background-color:white;
+  box-shadow:0px 0px 15px black;
 }

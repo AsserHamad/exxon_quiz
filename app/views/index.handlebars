@@ -1,5 +1,6 @@
+
 <head>
-  <meta charset="UTF-8">
+    <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>{{title }}</title>
   <link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
@@ -43,77 +44,25 @@
       <h1>{{user.firstName}} {{user.lastName}}</h1>
     {{/if}}
     <div class="row">
-      <!-- <div class="col-xs-6">
-        <button type="`button`" class="butt center-block animated  tada" name="button" data-toggle="modal" href="#login_div">Login</button>
-      </div>
-      <div class="col-xs-6">
-        <button type="`button`" class="butt center-block animated infinite tada" name="button" data-toggle="modal" href="#register_div">Register</button>
-      </div> -->
       <input style="display:none" type="text" name="fakeusernameremembered"/>
       <input style="display:none" type="password" name="fakepasswordremembered"/>
+
+      <p><h1><span id="login_text">Login</span> <button id="check" type="button" name="button"></button> <span id="reg_text">Register</span></h1></p>
+
       <input class="center-block login_form" type="text" name="" size="45" value="" placeholder="E-Mail Address"><br>
       <input class="center-block login_form" type="password" size="45" placeholder="Password"><br>
+
+        <input class="reg_fields center-block login_form" type="text" size="22" placeholder="Full name"><br>
+
       <div class="row">
-        <div class="col-xs-4"></div>
-        <div class="col-xs-2" style="border-right:1px solid rgba(0,0,200,0.4)">
-          <button id="login_btn" type="button" name="button">LOGIN</button>
-        </div>
-        <div class="col-xs-2">
-          <button id="reg_btn" type="button" name="button">REGISTER</button>
-        </div>
-        <div class="col-xs-4">
 
-        </div>
+          <button id="reg_btn" type="button" name="button">SUBMIT</button>
+
       </div>
 
     </div>
 
-      <div id="login_div" class="modal fade shake page" role="dialog">
-        <div class="modal-dialog">
-        <div class="modal-content login_modal">
 
-          <div id="login_modal" class="modal-body">
-            <h1 class="modal-header">Login</h1><br />
-          <span id="login_error" style="color:#cc0000">
-          </span>
-            <br />
-            <form id="login_form" >
-             <input id="login_email" class="form-control login_search" name="email" placeholder="example@exxon.com" autofocus required /><br />
-             <a style="float:right;cursor:pointer" data-toggle="modal" data-target="#forgot-password">Forgot your password?</a>
-             <input id="login_password" class="form-control login_search" name="password" placeholder="Password" type="password" required /><br />
-             <input id="login_btn" type="button" value="Login" class="btn"/>
-           </form>
-
-          </div>
-        </div>
-       </div>
-    </div>
-
-    <div id="register_div" class="modal fade shake page" role="dialog">
-      <div class="modal-dialog">
-      <div class="modal-content register_modal">
-
-        <div  id="modal" class="modal-body">
-          <h1 class="modal-header">Register</h1><br />
-        <span>
-          {{error_login}}
-        </span>
-          <br />
-          <form id="yo" action="/signup" method="POST" novalidate>
-            <input class="form-control register_search" name="firstName" placeholder="First Name" autofocus required /><br />
-            <input class="form-control register_search" name="lastName" placeholder="Last Name" autofocus required /><br />
-            <input class="form-control register_search" name="email" placeholder="Email" autofocus required /><br />
-            <input class="form-control register_search" name="password" placeholder="Password" type="password" required /><br />
-            <div class="form-inline">
-              Normal <input type="radio" name="role" value="user">
-              Admin <input type="radio" name="role" value="admin">
-            </div>
-           <button id="signup_btn" class="home_submit btn" type="submit" >Sign Up</button><br />
-          </form>
-        </div>
-      </div>
-     </div>
-   </div>
  </div>
 </header>
 </body>
