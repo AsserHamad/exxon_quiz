@@ -1,33 +1,69 @@
 $(document).ready(function() {
   var checked = false;
+  function reg(credentials){
+    $.post('/signup', credentials)
+      .done((res) => {
+        console.log(res);
+        alert('await acceptance mate!');
+      })
+      .fail((res) => {
+        console.log(JSON.stringify(res));
+        $("#err").empty();
+        res = res.responseJSON;
 
-  $("#login_div").on('keyup', (e) => {
-    if (e.keyCode === 13){
-      $("#login_btn").click();
-    }
+          $("#err").html(res.message);
+      })
+  };
 
-    else if (e.keyCode === 27){
-      $("#login_modal").modal('hide');
+  function login(credentials){
+    $.post('/signin', credentials)
+      .done((res) => {
+        if(res.accepted)
+        window.location = '/';
+        else if(res.not_accepted) {
+          // TODO: handle logic here :
+          alert('await acceptance mate!');
+        }
+      })
+      .fail((res) => {
+        $("#err").empty();
+        res = res.responseJSON;
+
+        if(res.info)
+          $("#err").html(res.info.message);
+        else
+          $("#err").html(JSON.stringify(res.err));
+      });
+  }
+
+
+  var awesome_func = function(){
+    if(!checked){
+      $("#login_text").removeClass("check_text0");
+      $("#login_text").addClass("check_text1");
+      $("#reg_text").removeClass("check_text1");
+      $("#reg_text").addClass("check_text0");
+      $("#check").css({transform:'rotate(180deg)'});
+      $("#check").css({animation:'shaking_tire1 2s ease infinite'});
+      $(".reg_fields").show();
+    } else{
+      $("#login_text").removeClass("check_text1");
+      $("#login_text").addClass("check_text0");
+      $("#reg_text").removeClass("check_text0");
+      $("#reg_text").addClass("check_text1");
+      $("#check").css({transform:'rotate(0deg)'});
+      $("#check").css({animation:'shaking_tire0 2s ease infinite'});
+      $(".reg_fields").hide();
     }
+    checked=!checked;
+  }
+$("#check").click(function(){
+  awesome_func();
+
 });
 
-$("#reg_text").hide();
-$(".reg_fields").hide();
-$("#check").on('click',function(){
-  if(!checked){
-    // $("#reg_text").show('slide', {direction: 'right'}, 1000);
-    // $("#login_text").hide('slide', {direction: 'right'}, 1000);
-    $("#reg_text").show();
-    $("#login_text").hide();
-    $(".reg_fields").slideDown();
-  }else{
-    // $("#login_text").show('slide', {direction: 'left'}, 1000);
-    // $("#reg_text").hide('slide', {direction: 'left'}, 1000);
-    $("#login_text").show();
-    $("#reg_text").hide();
-    $(".reg_fields").slideUp();
-  }
-  checked=!checked;
+$("#submit_btn").click(() => {
+  checked ? reg($("#log_reg").serialize()) : login($("#log_reg").serialize());
 });
 
 $("#register_div").on('keyup', (e) => {
@@ -45,47 +81,6 @@ $("#register_div").on('keyup', (e) => {
     $("#logo").removeClass("glowing");
   }, 0);
 
-
-  $("#signup_btn").click(function() {
-
-
-    $.post('/signup', credentials, (res) => {
-      console.log(res);
-      $("#singup_error").empty();
-      if(res.accepted)
-      window.location = '/';
-      else if(res.info || res.err) {
-
-        $("#login_error").html(res.info.message || JSON.stringify(res.err));
-      }
-      else if(res.not_accepted) {
-        // TODO: hanlde logic here :
-        alert('await acceptance mate!');
-      }
-    })
-  })
-
-  $("#login_btn").click(function() {
-
-    $.post('/signin', $("#login_form").serialize())
-      .done((res) => {
-        if(res.accepted)
-        window.location = '/';
-        else if(res.not_accepted) {
-          // TODO: handle logic here :
-          alert('await acceptance mate!');
-        }
-      })
-      .fail((res) => {
-        $("#login_error").empty();
-        res = res.responseJSON;
-
-        if(res.info)
-          $("#login_error").html(res.info.message);
-        else
-          $("#login_error").html(JSON.stringify(res.err));
-      });
-    });
 
   $('.quizmania').funnyText({
   		speed: 250,

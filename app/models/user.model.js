@@ -13,7 +13,7 @@ const UserSchema = new Schema({
     unique: true,
     trime: true,
 		// Validate the email format
-		match: [/.+\@exxon\..+/, "Please fill a valid email address under exxon domain name"]
+		match: [/^.+\@exxon\..+$/, "Please fill a valid email address under exxon domain name"]
 	},
   role: {
     type: String,
