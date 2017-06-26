@@ -41,7 +41,9 @@
      <!-- <h1 class="quizmania">QUIZMANIA</h1> -->
     {{#if user}}
       <h1>{{user.firstName}} {{user.lastName}}</h1>
-    {{/if}}
+      
+    {{else}}
+
     <div>
       <input style="display:none" type="text" name="fakeusernameremembered"/>
       <input style="display:none" type="password" name="fakepasswordremembered"/>
@@ -63,6 +65,7 @@
       </div>
 
     </div>
+    {{/if}}
 
 
  </div>
