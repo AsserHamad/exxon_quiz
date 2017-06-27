@@ -14,4 +14,16 @@ module.exports = (app) => {
 
   app.route('/users')
   .get(users.list);
+
+  app.get('/leaderboards', (req, res) => res.redirect("/leaderboards/1"))
+
+  app.get('/leaderboards/:value', (req, res, next) => {
+    if(!Number(req.params.value))
+      next('Not a number!')
+    else
+      next()
+  })
+
+  app.get('/leaderboards/:pageNum', users.leaderboards)
+
 }

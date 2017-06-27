@@ -2,14 +2,14 @@ var gulp = require('gulp'),
   nodemon = require('gulp-nodemon'),
   plumber = require('gulp-plumber'),
   livereload = require('gulp-livereload'),
-  config = require('./config/config'),
-  {MongoClient} = require('mongodb'),
-  {argv: args} = require('yargs');
+  config = require('./config/config'), {MongoClient} = require('mongodb'), {argv: args} = require('yargs')
 
 mongoose = require('mongoose');
 mongoose.connect(config.db),
 require('./app/models/user.model');
-const User = mongoose.model('User');
+require('./app/models/match.model');
+const User = mongoose.model('User'),
+  Match = mongoose.model('Match')
 
 gulp.task('develop', function() {
   livereload.listen();
@@ -125,6 +125,29 @@ gulp.task('genUsers', () => {
     })(adminSeed, i)
   }
 
+})
+
+gulp.task('genMatches', () => {
+  for (let i = 0; i < 80; i++) {
+
+    let matchSeed = new Match({
+      quizTaker: mongoose.Types.ObjectId(),
+      score: Math.random() * 6000
+    })
+    console.log('hi');
+
+    ((match, index) => {
+      console.log('yo');
+      match.save((err, value) => {
+        if(err)
+          console.log('woah '+ err);
+        if (index == 79) {
+          console.log('bye mate!');
+          process.exit();
+        }
+      })
+    })(matchSeed, i)
+  }
 })
 
 gulp.task('default', ['develop']);
