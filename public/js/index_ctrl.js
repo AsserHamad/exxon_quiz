@@ -19,7 +19,7 @@ $(document).ready(function() {
     $.post('/signin', credentials)
       .done((res) => {
         if(res.accepted)
-        window.location = '/';
+        window.location = '/home';
         else if(res.not_accepted) {
           // TODO: handle logic here :
           alert('await acceptance mate!');
@@ -30,7 +30,7 @@ $(document).ready(function() {
         res = res.responseJSON;
 
         if(res.info)
-          $("#err").html(res.info.message);
+          $("#err").html(res.message);
         else
           $("#err").html(JSON.stringify(res.err));
       });
