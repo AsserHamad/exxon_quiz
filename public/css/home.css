@@ -1,5 +1,20 @@
+
+html{
+  overflow-x:hidden;
+}
 body{
-  background: linear-gradient(180deg, #0000FF, #ff0000) fixed;
+  background: linear-gradient(0deg, #BF0426, #2E62A6, #2A6DA6, #D9043D) fixed;
+  background-size:100% 200%;
+  animation: moving_background 30s ease infinite;
+}
+#home{
+  font-family: 'Oxygen';
+
+}
+@keyframes moving_background {
+  0%{background-position: 100% 0%;}
+  50%{background-position: 100% 100%;}
+  100%{background-position: 100% 0%;}
 }
 #trophy_img{
   width:30%;
@@ -10,4 +25,31 @@ body{
   font-size: 170%;
   position:fixed;
   color:white;
+}
+#clicks{
+  margin-top:20%;
+  width:70%;
+  font-size: 4rem;
+}
+#button_single{
+  background-color: #F2F2F2;
+  border-radius:12rem 0rem 0rem 12rem;
+  padding:5% 0%;
+  transition-duration:0.2s;
+  color:#BF0426;
+  border:none;
+}
+#button_single:hover{
+  filter: drop-shadow(0 0px 15px white);
+}
+#button_multi{
+  background-color: #BF0426;
+  border-radius: 0rem 12rem 12rem 0rem;
+  transition-duration:0.2s;
+  color:#2E62A6;
+  padding:5% 0%;
+  border:none;
+}
+#button_multi:hover{
+  filter: drop-shadow(0 0px 15px #BF0426);
 }
