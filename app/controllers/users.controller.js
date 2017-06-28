@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
   User = mongoose.model('User'),
-  passport = require('passport'), {authorized} = require('../lib/checks.js'),
+  passport = require('passport'),
   Match = mongoose.model('Match')
 
   const getErrorMessage = function(err, unique) {
@@ -92,7 +92,7 @@ const mongoose = require('mongoose')
 
   exports.accept = (req, res) => {
     console.log(req.params.userID);
-    if (authorized(req.user) && req.user.role == 'admin')
+
       User.findOne({
         _id: req.params.userID
       }, (err, user) => {
@@ -108,17 +108,14 @@ const mongoose = require('mongoose')
           })
         }
       })
-    else {
-      res.status(400).send("Unauothorized!");
-    }
   }
 
   exports.leaderboards = (req, res, next) => {
     console.log('yoo');
-    if(authorized(req.user)) {
     Match.count((error, value) => {
       if (req.params.pageNum * 20 > value)
-        return next('too large'); // change next to json if you want to handle this dynamically
+        return next({status: 404}); // change next to json if you want to handle this dynamically
+
       if (req.params.pageNum == 1)
         Match.top20(0, (err, values) => {
           res.json({values: values, count: value})
@@ -127,11 +124,6 @@ const mongoose = require('mongoose')
         Match.top20(((req.params.pageNum) - 1) * 20, (err, values) => {
           res.json({values: values})
         })
-
       }
     })
-    } else {
-      res.status(401).send('nop!')
-    }
-
   }

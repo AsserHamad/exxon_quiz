@@ -1,4 +1,6 @@
 exports.main = (req, res, next) => {
+  if(req.user && req.user.accepted)
+    return res.redirect('/home')
   res.render('index', {
     title: 'ExxonMobil',
     layout:false,

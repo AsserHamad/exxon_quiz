@@ -1,4 +1,7 @@
-const users = require('../controllers/users.controller');
+const users = require('../controllers/users.controller'),
+      middlewares = require('../middlewares.js'),
+      {authenticated} = middlewares,
+      {authorizedAdmin} = middlewares
 
 module.exports = (app) => {
 
@@ -10,20 +13,20 @@ module.exports = (app) => {
     res.redirect("/");
   })
 
-  app.get('/users/:userID/accept', users.accept);
+  app.get('/users/:userID/accept', authorizedAdmin, users.accept);
 
   app.route('/users')
   .get(users.list);
 
-  app.get('/leaderboards', (req, res) => res.redirect("/leaderboards/1"))
-
   app.get('/leaderboards/:value', (req, res, next) => {
     if(!Number(req.params.value))
-      next('Not a number!')
+      next({status:404, message: "not found :/"})
     else
       next()
   })
 
-  app.get('/leaderboards/:pageNum', users.leaderboards)
+  app.get('/leaderboards/:pageNum', authenticated, users.leaderboards)
+
+  app.get('/leaderboards', (req, res) => res.redirect("/leaderboards/1"))
 
 }

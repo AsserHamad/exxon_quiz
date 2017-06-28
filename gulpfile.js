@@ -134,7 +134,6 @@ gulp.task('genMatches', () => {
       quizTaker: mongoose.Types.ObjectId(),
       score: Math.random() * 6000
     })
-    console.log('hi');
 
     ((match, index) => {
       console.log('yo');

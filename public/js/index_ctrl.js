@@ -80,14 +80,4 @@ $("#register_div").on('keyup', (e) => {
   setTimeout(function() {
     $("#logo").removeClass("glowing");
   }, 0);
-
-
-  $('.quizmania').funnyText({
-  		speed: 250,
-  		borderColor: 'none',
-  		activeColor: 'white',
-  		color: 'white',
-  		fontSize: '9em',
-  		direction: 'both'
-  	});
-});
+})
