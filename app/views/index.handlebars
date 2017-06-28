@@ -1,0 +1,51 @@
+
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>{{title }}</title>
+  {{> essentials}}
+  <link rel="stylesheet" href="/css/style.css">
+
+  {{#if ENV_DEVELOPMENT}}
+    <script src="http://localhost:35729/livereload.js"></script>
+  {{/if}}
+</head>
+<body>
+<header>
+  <div class="container-fluid" style="display:flex; flex-direction:column">
+
+    <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Exxon_Mobil_Logo.svg/2000px-Exxon_Mobil_Logo.svg.png" class="center-block glowing" alt="ExxonMobil Logo">
+
+     <!-- <h1 class="quizmania">QUIZMANIA</h1> -->
+    {{#if user}}
+      <h1>{{user.firstName}} {{user.lastName}}</h1>
+
+    {{else}}
+
+    <div>
+      <input style="display:none" type="text" name="fakeusernameremembered"/>
+      <input style="display:none" type="password" name="fakepasswordremembered"/>
+
+      <p><h1><span id="login_text" class="check_text0">Login</span> <img id="check" src="../img/tire.png" /> <span class="check_text1" id="reg_text">Register</span></h1></p>
+      <form id="log_reg">
+        <span id="err">*Must be a valid exxonmobil email</span>
+      <input class="center-block login_form" type="text" name="email" readonly onfocus="this.removeAttribute('readonly')" size="45"  placeholder="E-Mail Address"><br>
+      <input class="center-block login_form" name="password" type="password" size="45" placeholder="Password"><br>
+        <div class="form-inline">
+          <input class="reg_fields login_form" name="firstName" style="margin-right:1%;display:none" type="text" placeholder="First name">
+          <input class="reg_fields  login_form" name="lastName" style="margin-left:1%;margin-bottom:1.5%;display:none" type="text" placeholder="Last name">
+        </div>
+      </form>
+      <div class="row">
+
+          <button id="submit_btn" type="button" name="button">SUBMIT</button>
+
+      </div>
+
+    </div>
+    {{/if}}
+
+
+ </div>
+</header>
+</body>
