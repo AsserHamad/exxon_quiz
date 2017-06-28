@@ -5,5 +5,4 @@ module.exports = (app) => {
   app.get('/', index.main);
 
   app.get('/home', authenticated, index.home)
-
 }

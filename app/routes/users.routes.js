@@ -28,5 +28,4 @@ module.exports = (app) => {
   app.get('/leaderboards/:pageNum', authenticated, users.leaderboards)
 
   app.get('/leaderboards', (req, res) => res.redirect("/leaderboards/1"))
-
 }

@@ -92,7 +92,6 @@ const mongoose = require('mongoose')
 
   exports.accept = (req, res) => {
     console.log(req.params.userID);
-
       User.findOne({
         _id: req.params.userID
       }, (err, user) => {
@@ -115,7 +114,6 @@ const mongoose = require('mongoose')
     Match.count((error, value) => {
       if (req.params.pageNum * 20 > value)
         return next({status: 404}); // change next to json if you want to handle this dynamically
-
       if (req.params.pageNum == 1)
         Match.top20(0, (err, values) => {
           res.json({values: values, count: value})
