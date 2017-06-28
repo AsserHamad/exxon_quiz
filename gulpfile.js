@@ -136,6 +136,7 @@ gulp.task('genMatches', () => {
     })
 
     ((match, index) => {
+      console.log('yo');
       match.save((err, value) => {
         if(err)
           console.log('woah '+ err);
