@@ -122,7 +122,6 @@ const mongoose = require('mongoose')
         Match.top20(((req.params.pageNum) - 1) * 20, (err, values) => {
           res.json({values: values})
         })
-
       }
     })
   }

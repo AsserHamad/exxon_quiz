@@ -3,7 +3,6 @@ const users = require('../controllers/users.controller'),
       {authenticated} = middlewares,
       {authorizedAdmin} = middlewares
 
-
 module.exports = (app) => {
 
   app.post('/signup', users.signup);
