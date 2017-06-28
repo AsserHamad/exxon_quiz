@@ -36,31 +36,27 @@ $(document).ready(function() {
       });
   }
 
+$("#reg_text").on('click', () => {
+    checked = true;
+    $("#login_text").removeClass("check_text0");
+    $("#login_text").addClass("check_text1");
+    $("#reg_text").removeClass("check_text1");
+    $("#reg_text").addClass("check_text0");
+    $("#check").css({transform:'rotate(180deg)'});
+    $("#check").css({animation:'shaking_tire1 2s ease infinite'});
+    $(".reg_fields").show();
+})
 
-  var awesome_func = function(){
-    if(!checked){
-      $("#login_text").removeClass("check_text0");
-      $("#login_text").addClass("check_text1");
-      $("#reg_text").removeClass("check_text1");
-      $("#reg_text").addClass("check_text0");
-      $("#check").css({transform:'rotate(180deg)'});
-      $("#check").css({animation:'shaking_tire1 2s ease infinite'});
-      $(".reg_fields").show();
-    } else{
-      $("#login_text").removeClass("check_text1");
-      $("#login_text").addClass("check_text0");
-      $("#reg_text").removeClass("check_text0");
-      $("#reg_text").addClass("check_text1");
-      $("#check").css({transform:'rotate(0deg)'});
-      $("#check").css({animation:'shaking_tire0 2s ease infinite'});
-      $(".reg_fields").hide();
-    }
-    checked=!checked;
-  }
-$("#check").click(function(){
-  awesome_func();
-
-});
+$("#login_text").on('click', () => {
+  checked = false;
+  $("#login_text").removeClass("check_text1");
+  $("#login_text").addClass("check_text0");
+  $("#reg_text").removeClass("check_text0");
+  $("#reg_text").addClass("check_text1");
+  $("#check").css({transform:'rotate(0deg)'});
+  $("#check").css({animation:'shaking_tire0 2s ease infinite'});
+  $(".reg_fields").hide();
+})
 
 $("#submit_btn").click(() => {
   checked ? reg($("#log_reg").serialize()) : login($("#log_reg").serialize());
