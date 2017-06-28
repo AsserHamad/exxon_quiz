@@ -57,10 +57,11 @@ module.exports = function(app, config) {
 
   if(app.get('env') === 'development'){
     app.use(function (err, req, res, next) {
+      console.log('da status is ' + err.status);
+      if(err.status == 404) err.message = "Not Found :/"
       res.status(err.status || 500);
       res.render('error', {
         message: err.message,
-        error: err,
         title: 'error'
       });
     });

@@ -1,8 +1,9 @@
-const index = require('../controllers/index.controller');
+const index = require('../controllers/index.controller'),
+      {authenticated} = require('../middlewares.js');
 
 module.exports = (app) => {
   app.get('/', index.main);
 
-  app.get('/home', index.home)
+    app.get('/home', authenticated, index.home)
 
 }

@@ -1,13 +1,4 @@
 body{
   background: linear-gradient(180deg, #0000FF, #ff0000) fixed;
-}
-#trophy_img{
-  width:30%;
-}
-#trophy{
-  left:75%;
-  top:5%;
-  font-size: 170%;
-  position:fixed;
-  color:white;
+  background-size: cover;
 }
