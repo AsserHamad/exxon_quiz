@@ -28,9 +28,8 @@ $(document).ready(function() {
       .fail((res) => {
         $("#err").empty();
         res = res.responseJSON;
-
         if(res.info)
-          $("#err").html(res.message);
+          $("#err").html(res.info.message);
         else
           $("#err").html(JSON.stringify(res.err));
       });
