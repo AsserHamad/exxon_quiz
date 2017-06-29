@@ -19,7 +19,7 @@ const QuestionSchema = new Schema({
   }
 })
 
-QuestionSchema.pre('save', () => {
+QuestionSchema.pre('save', (next) => {
   if(choices.contains(this.correctAnswer)){
     next();
   } else {
