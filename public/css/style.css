@@ -59,9 +59,7 @@ header {
   color: white;
 }
 
-/*#login_text:hover{
 
-}*/
 
 .quizmania {
   color: #FE000C;
@@ -167,10 +165,12 @@ a {
   70%{transform: rotate(0deg);}
 }
 @keyframes shaking_tire1 {
-  40%{transform: rotate(180deg);}
-  50%{transform: rotate(187deg);}
-  60%{transform: rotate(173deg);}
-  70%{transform: rotate(180deg);}
+  0%{transform:  scalex(-1);}
+  40%{transform: rotate(0deg) scalex(-1);}
+  50%{transform: rotate(7deg)  scalex(-1);}
+  60%{transform: rotate(-7deg)  scalex(-1);}
+  70%{transform: rotate(0deg) scalex(-1);}
+  100%{transform:  scalex(-1);}
 }
 .check_text0{
   color:white;
@@ -179,6 +179,7 @@ a {
   border-radius:20px;
   animation:glow_text 2s ease infinite;
   transition-duration:0.5s;
+  cursor:default;
 }
 @keyframes glow_text{
   0%{text-shadow:0px 0px 10px white;}
@@ -188,6 +189,11 @@ a {
 .check_text1{
   color:rgba(0,0,0,0.3);
   transition-duration:0.5s;
+  cursor:pointer;
+  transition-duration:0.2s;
+}
+.check_text1:hover{
+  color:rgba(255,255,255,0.3)
 }
 
 ::-webkit-scrollbar {

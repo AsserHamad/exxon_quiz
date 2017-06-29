@@ -10,7 +10,7 @@
         let tr  = $("<tr></tr>")
         tr.append(`<td>${value.quizTaker.email}</td>`)
         tr.append(`<td>${value.quizTaker.fullName}</td>`)
-        tr.append(`<td>${value.score}</td>`)
+        tr.append(`<td>${Math.floor(value.score)}</td>`)
         table.append(tr);
       }
     })
