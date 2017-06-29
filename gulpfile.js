@@ -51,7 +51,7 @@ gulp.task('rmMatches', () => {
     if (err)
       console.log(err);
     else {
-        db.collection('users').deleteMany(() => {
+        db.collection('matches').deleteMany(() => {
           process.exit();
         })
     }
