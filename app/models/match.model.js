@@ -25,6 +25,7 @@ MatchSchema.statics.top20 = function(offset, callback) {
   .sort({score: -1 })
   .skip(offset)
   .limit(20)
+  .populate('quizTaker', 'firstName lastName email')
   .exec(callback)
 }
 
