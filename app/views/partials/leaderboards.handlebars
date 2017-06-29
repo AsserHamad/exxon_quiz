@@ -3,13 +3,22 @@
   var results
   $.get("/leaderboards")
     .done((res) => {
-      count = res.count
-      results = res.values
+      const count = res.count
+      const table = $("#table")
+      for(let value of res.values) {
+        console.log(value);
+        let tr  = $("<tr></tr>")
+        tr.append(`<td>${value.quizTaker.email}</td>`)
+        tr.append(`<td>${value.quizTaker.fullName}</td>`)
+        tr.append(`<td>${value.score}</td>`)
+        table.append(tr);
+      }
     })
+
 </script>
 
 <div align="center" class="table">
-<table class="responstable">
+<table class="responstable" id="table">
 
 <tr>
  <th data-th="Leaderboards"><span>Email</span></th>
@@ -17,8 +26,4 @@
  <th align="center">Score</th>
 </tr>
 
-<tr>
-   <td></td>
-   <td></td>
-   <td></td>
- </tr>
+ </table>

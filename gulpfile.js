@@ -46,6 +46,18 @@ gulp.task('rmUsers', () => {
   })
 })
 
+gulp.task('rmMatches', () => {
+  MongoClient.connect(config.db, (err, db) => {
+    if (err)
+      console.log(err);
+    else {
+        db.collection('users').deleteMany(() => {
+          process.exit();
+        })
+    }
+  })
+})
+
 gulp.task('mkadmin', () => {
   const user = new User({
     firstName: 'Master',
@@ -128,24 +140,25 @@ gulp.task('genUsers', () => {
 })
 
 gulp.task('genMatches', () => {
-  for (let i = 0; i < 80; i++) {
-
-    let matchSeed = new Match({
-      quizTaker: mongoose.Types.ObjectId(),
-      score: Math.random() * 6000
-    })
-
-    ((match, index) => {
-      match.save((err, value) => {
-        if(err)
-          console.log('woah '+ err);
-        if (index == 79) {
-          console.log('bye mate!');
-          process.exit();
-        }
+  User.findSafely({}, (err, users) => {
+    for (let i in users) {
+      let matchSeed = new Match({
+        quizTaker: users[i]._id,
+        score: Math.random() * 6000
       })
-    })(matchSeed, i)
-  }
+      console.log('hmm');
+      ((match, index) => {
+        match.save((err, value) => {
+          if(err)
+            console.log('woah '+ err);
+          if (index == 79) {
+            console.log('bye mate!');
+            process.exit();
+          }
+        })
+      })(matchSeed, i)
+    }
+  })
 })
 
 gulp.task('default', ['develop']);
