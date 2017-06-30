@@ -58,7 +58,7 @@ UserSchema.pre('save', function(next) {
 
 // Create an instance method for hashing a password
 UserSchema.methods.hashPassword = function(password) {
-	return crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('base64');
+	return crypto.pbkdf2Sync(password, this.salt, 10000, 64, 'sha384').toString('base64');
 };
 
 // Create an instance method for authenticating user
