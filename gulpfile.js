@@ -8,8 +8,11 @@ mongoose = require('mongoose');
 mongoose.connect(config.db),
 require('./app/models/user.model');
 require('./app/models/match.model');
+require('./app/models/question.model');
+
 const User = mongoose.model('User'),
-  Match = mongoose.model('Match')
+  Match = mongoose.model('Match'),
+  Question = mongoose.model('Question')
 
 gulp.task('develop', function() {
   livereload.listen();
@@ -159,6 +162,27 @@ gulp.task('genMatches', () => {
       })(matchSeed, i)
     }
   })
+})
+
+gulp.task('genQuestions', () => {
+  for (let i = 0; i < 50; i++) {
+
+    const questionSeed = new Question({
+      text: `Who is employee #${i}?`,
+      choices: ['Frog', 'Cat', 'Bat', 'Human duuh'],
+      correctAnswer:'Human duuh'
+    });
+
+    ((question, i) => {
+      question.save((err, question) => {
+        if(err)
+          console.log('woah '+ err);
+        console.log('hi');
+        if(i == 49)
+          process.exit()
+      })
+    })(questionSeed, i)
+  }
 })
 
 gulp.task('default', ['develop']);

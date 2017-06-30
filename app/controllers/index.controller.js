@@ -1,3 +1,5 @@
+const Question = require('mongoose').model('Question');
+
 exports.main = (req, res, next) => {
   if(req.user && req.user.accepted)
     return res.redirect('/home')
@@ -15,3 +17,9 @@ exports.home = (req, res, next) => {
     user: req.user
   })
 };
+
+exports.listQuestions = (req, res , next) => {
+  Question.find({}, (err, questions) => {
+    res.json(questions);
+  })
+}

@@ -1,5 +1,9 @@
 const mongoose = require('mongoose'),
-      Schema = mongoose.Schema;
+      Schema = mongoose.Schema,
+      {db} = require('../../config/config'),
+      autoIncrement = require('mongoose-auto-increment');
+      var connection = mongoose.createConnection(db)
+      autoIncrement.initialize(connection);
 
 const QuestionSchema = new Schema({
   text: {
@@ -10,7 +14,7 @@ const QuestionSchema = new Schema({
   },
   choices: {
     type: [String],
-    validate: [(val) => val == 4 , 'Please provide 4 choices!']
+    validate: [(val) => val.length == 4 , 'Please provide 4 choices!']
   },
   correctAnswer: {
     type: String,
@@ -19,10 +23,14 @@ const QuestionSchema = new Schema({
   }
 })
 
-QuestionSchema.pre('save', (next) => {
-  if(choices.contains(this.correctAnswer)){
+QuestionSchema.pre('save', function (next) {
+  if(this.choices.includes(this.correctAnswer)){
     next();
   } else {
     next('Quiz correct answer is not in the possbile choices you entered.');
   }
 });
+
+QuestionSchema.plugin(autoIncrement.plugin, 'Question')
+
+mongoose.model('Question', QuestionSchema);
