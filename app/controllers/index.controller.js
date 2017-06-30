@@ -19,7 +19,7 @@ exports.home = (req, res, next) => {
 };
 
 exports.listQuestions = (req, res , next) => {
-  Question.find({}, (err, questions) => {
+  Question.randomTen((questions) => {
     res.json(questions);
   })
 }

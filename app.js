@@ -1,11 +1,9 @@
 var express = require('express'),
   config = require('./config/config'),
   glob = require('glob'),
-  mongoose = require('mongoose'),
-  autoIncrement = require('mongoose-auto-increment');
-
-var connection = mongoose.connect(config.db);
-autoIncrement.initialize(connection)
+  mongoose = require('mongoose')
+  
+mongoose.connect(config.db);
 
 var db = mongoose.connection;
 db.on('error', function() {

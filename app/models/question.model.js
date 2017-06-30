@@ -1,11 +1,10 @@
-const mongoose = require('mongoose'),
+  const mongoose = require('mongoose'),
       Schema = mongoose.Schema,
-      {db} = require('../../config/config'),
-      autoIncrement = require('mongoose-auto-increment');
-      var connection = mongoose.createConnection(db)
-      autoIncrement.initialize(connection);
+      AutoIncrement = require('mongoose-sequence'),
+      each = require('async-each-series');
 
 const QuestionSchema = new Schema({
+  _id: Number,
   text: {
     type: String,
     requred: "Quiz Question required.",
@@ -21,7 +20,7 @@ const QuestionSchema = new Schema({
     trim: true,
     required: "A correct answer is required."
   }
-})
+}, {_id: false})
 
 QuestionSchema.pre('save', function (next) {
   if(this.choices.includes(this.correctAnswer)){
@@ -31,6 +30,31 @@ QuestionSchema.pre('save', function (next) {
   }
 });
 
-QuestionSchema.plugin(autoIncrement.plugin, 'Question')
+QuestionSchema.statics.randomTen = function(done) {
+  var output = []
+  var values = []
+  var ctxt = this
+  this.count((error, value) => {
+    for(let i = 0; i<10; i++) {
+      let random = Math.floor(Math.random() * value) + 1
+      values.push(random)
+    }
+      each(values, function (el, next) {
+        ctxt.findOne({_id: el}, (err,value) => {
+          console.log(el);
+          if(!value)
+            console.log('dooh');
+          output.push(value)
+          next()
+        })
+      }, function (err) {
+        console.log('done');
+        done(output)
+      })
+
+      })
+    }
+
+QuestionSchema.plugin(AutoIncrement)
 
 mongoose.model('Question', QuestionSchema);

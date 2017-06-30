@@ -23,7 +23,6 @@ body {
     100%{background-image: -webkit-linear-gradient(210deg, #013A6B 50%, #004E95 50%);background-position:0% 0%}
 }
 header {
-  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;

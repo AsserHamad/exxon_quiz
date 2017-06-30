@@ -18,6 +18,7 @@ $(document).ready(function() {
   function login(credentials){
     $.post('/signin', credentials)
       .done((res) => {
+        console.log(JSON.stringify(res));
         if(res.accepted)
         window.location = '/home';
         else if(res.not_accepted) {
