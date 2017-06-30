@@ -2,7 +2,9 @@ var gulp = require('gulp'),
   nodemon = require('gulp-nodemon'),
   plumber = require('gulp-plumber'),
   livereload = require('gulp-livereload'),
-  config = require('./config/config'), {MongoClient} = require('mongodb'), {argv: args} = require('yargs')
+  config = require('./config/config'), {MongoClient} = require('mongodb'), {argv: args} = require('yargs'),
+  each = require('async-each-series');
+
 
 mongoose = require('mongoose');
 mongoose.connect(config.db),
@@ -165,6 +167,8 @@ gulp.task('genMatches', () => {
 })
 
 gulp.task('genQuestions', () => {
+
+  let questions = []
   for (let i = 0; i < 50; i++) {
 
     const questionSeed = new Question({
@@ -172,17 +176,19 @@ gulp.task('genQuestions', () => {
       choices: ['Frog', 'Cat', 'Bat', 'Human duuh'],
       correctAnswer:'Human duuh'
     });
-
-    ((question, i) => {
-      question.save((err, question) => {
-        if(err)
-          console.log('woah '+ err);
-        console.log('hi');
-        if(i == 49)
-          process.exit()
-      })
-    })(questionSeed, i)
+    questions.push(questionSeed)
   }
-})
+
+  each(questions, function(el, next) {
+    el.save((err, question) => {
+      if(!err && question)
+        console.log('hi');
+      next();
+    })
+    }, function (err) {
+    console.log('finished');
+    process.exit();
+});
+  })
 
 gulp.task('default', ['develop']);
