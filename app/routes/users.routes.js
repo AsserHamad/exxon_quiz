@@ -24,7 +24,7 @@ module.exports = (app) => {
     else
       next()
   })
-
+  //TODO: Uncomment
   app.get('/leaderboards/:pageNum', /*authenticated,*/ users.leaderboards)
 
   app.get('/leaderboards', (req, res) => res.redirect("/leaderboards/1"))

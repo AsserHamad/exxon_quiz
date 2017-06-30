@@ -71,7 +71,7 @@ body{
   border:none;
 }
 @keyframes single_transition {
-  100%{width:10%;font-size:3rem;}
+  100%{width:10%;font-size:2rem;}
 }
 #button_single:hover{
   filter: drop-shadow(0 0px 15px white);
@@ -90,8 +90,9 @@ body{
   border:none;
   }
   @keyframes mult_transition {
-  100%{width:0%;}
-  }#button_multi:hover{
+    100%{width:0%;font-size:2rem;}
+  }
+  #button_multi:hover{
   filter: drop-shadow(0 0px 15px #BF0426);
 }
 
@@ -117,10 +118,21 @@ body{
   position:fixed;
   background-color:#D9043D;
   color: #F2F2F2;
-  top:5%;
+  top:0%;
+  padding-top:5%;
   z-index:2;
-  border-radius:2rem;
+  border-radius:0rem 0rem 2rem 2rem;
   padding:2% 2%;
   font-size:200%;
   display:none;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  transform:translateY(-1rem);
+  box-shadow:0.6rem 0.6rem 0.6rem rgba(0,0,0,0.4);
+}
+#admin:hover{
+  transform:translateY(0rem);
+}
+modal.fade:not(.in) .modal-dialog {
+    transform: translate3d(0%, 0, 0);
 }

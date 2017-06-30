@@ -26,8 +26,7 @@ gulp.task('develop', function() {
     this.stderr.pipe(process.stderr);
   });
 });
-
-gulp.task('rmUsers', () => {
+function rmUsers(){
   MongoClient.connect(config.db, (err, db) => {
     if (err)
       console.log(err);
@@ -47,9 +46,10 @@ gulp.task('rmUsers', () => {
       }
     }
   })
-})
+}
+gulp.task('rmUsers', rmUsers());
 
-gulp.task('rmMatches', () => {
+function rmMatches(){
   MongoClient.connect(config.db, (err, db) => {
     if (err)
       console.log(err);
@@ -59,9 +59,12 @@ gulp.task('rmMatches', () => {
         })
     }
   })
+}
+gulp.task('rmMatches', () => {
+  rmMatches();
 })
 
-gulp.task('mkadmin', () => {
+function genAdmins(){
   const user = new User({
     firstName: 'Master',
     lastName: 'Admin',
@@ -79,9 +82,12 @@ gulp.task('mkadmin', () => {
     }
     process.exit();
   })
+}
+gulp.task('genAdmins', () => {
+  mkAdmins();
 })
 
-gulp.task('genUsers', () => {
+function genUsers(){
   let success = 0,
     failure = 0;
 
@@ -139,10 +145,12 @@ gulp.task('genUsers', () => {
       })
     })(adminSeed, i)
   }
-
+}
+gulp.task('genUsers', () => {
+  genUsers();
 })
 
-gulp.task('genMatches', () => {
+function genMatches(){
   User.findSafely({}, (err, users) => {
     for (let i in users) {
       let matchSeed = new Match({
@@ -162,11 +170,13 @@ gulp.task('genMatches', () => {
       })(matchSeed, i)
     }
   })
+}
+gulp.task('genMatches', () => {
+  genMatches();
 })
 
-gulp.task('genQuestions', () => {
+function genQuestions(){
   for (let i = 0; i < 50; i++) {
-
     const questionSeed = new Question({
       text: `Who is employee #${i}?`,
       choices: ['Frog', 'Cat', 'Bat', 'Human duuh'],
@@ -183,6 +193,18 @@ gulp.task('genQuestions', () => {
       })
     })(questionSeed, i)
   }
+}
+gulp.task('genQuestions', () => {
+  genQuestions();
 })
+
+gulp.task('startOver', () => {
+  rmUsers();
+  rmMatches();
+  genAdmins();
+  genUsers();
+  genMatches();
+  genQuestions();
+});
 
 gulp.task('default', ['develop']);

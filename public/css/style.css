@@ -53,8 +53,8 @@ header {
   50%{box-shadow:2px 2px 30px rgba(0,0,255,0.5);}
   100%{box-shadow:2px 2px 5px rgba(0,0,0,0.7);}
 }
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: white;
+::-webkit-input-placeholder {
+  color: rgba(255,255,255,0.6);
 }
 
 

@@ -3,8 +3,8 @@ const index = require('../controllers/index.controller'),
 
 module.exports = (app) => {
   app.get('/', index.main);
-
-  app.get('/home', authenticated, index.home)
+  //TODO: Uncomment
+  app.get('/home', /*authenticated,*/ index.home)
 
   app.get('/questions', index.listQuestions)
 }
