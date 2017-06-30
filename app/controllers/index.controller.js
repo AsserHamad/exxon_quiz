@@ -14,7 +14,7 @@ exports.home = (req, res, next) => {
   res.render('home', {
     title: "Home Page",
     layout: false,
-    user: req.user
+    userJSON : encodeURIComponent(JSON.stringify(req.user))
   })
 };
 

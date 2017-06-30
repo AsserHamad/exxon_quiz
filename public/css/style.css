@@ -14,14 +14,13 @@ body {
   transition-duration:5s;
   background-image: -webkit-linear-gradient(30deg, #013A6B 50%, #004E95 50%);
   animation: gradient_animation 3s ease infinite;
-  -webkit-animation:gradient_animation 30s ease infinite;
+  -webkit-animation:gradient_animation 10s ease infinite;
 }
 @keyframes gradient_animation {
-    0%{background-position:100% 100%}
-    25%{background-position:50% 50%}
-    50%{background-position:0% 0%}
-    75%{background-position:50% 50%}
-    100%{background-position:100% 100%}
+    0%{background-image: -webkit-linear-gradient(30deg, #013A6B 50%, #004E95 50%);background-position:100% 100%}
+    50%{background-image: -webkit-linear-gradient(30deg, #013A6B 50%, #004E95 50%);background-position:0% 0%}
+    50.001%{background-image: -webkit-linear-gradient(210deg, #013A6B 50%, #004E95 50%);background-position:100% 100%}
+    100%{background-image: -webkit-linear-gradient(210deg, #013A6B 50%, #004E95 50%);background-position:0% 0%}
 }
 header {
   display: flex;
@@ -41,19 +40,18 @@ header {
   border:none;
   border-radius:5px;
   font-size:140%;
-  transition-duration: 0.1s;
-  box-shadow:2px 2px 30px rgba(255,0,0,0.7);
+  transition-duration: 0.3s;
   animation: bla 3s ease infinite;
   background-color: rgba(173,216,230,0.2);
   color:white;
 }
 .login_form:focus{
-  box-shadow:2px 2px 30px rgba(255,255,255,0.7);
+  background-color: rgba(0,0,0,0.3);
 }
 @keyframes bla{
-  0%{box-shadow:2px 2px 5px rgba(0,0,0,0.3);}
-  50%{box-shadow:2px 2px 30px rgba(0,150,150,0.5);}
-  100%{box-shadow:2px 2px 5px rgba(0,0,0,0.3);}
+  0%{box-shadow:2px 2px 5px rgba(0,0,0,0.7);}
+  50%{box-shadow:2px 2px 30px rgba(0,0,255,0.5);}
+  100%{box-shadow:2px 2px 5px rgba(0,0,0,0.7);}
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: white;
@@ -99,7 +97,7 @@ header {
   box-shadow: 0px 3px 10px rgba(0,0,0,0.8);
 }
 #submit_btn{
-  padding:2% 10% 2% 10%;
+  padding:1% 5% 1% 5%;
   color:white;
   background-color:red;
   background-image: -webkit-linear-gradient(30deg, #013A6B 0%, red 0%);
@@ -107,6 +105,8 @@ header {
   border:none;
   box-shadow: 0px 1px 10px rgba(0,0,0,0.5);
   transition-duration:0.3s;
+  font-family:Bahiana;
+  font-size:200%;
 }
 #submit_btn:hover{
   transform: translateY(-2px);

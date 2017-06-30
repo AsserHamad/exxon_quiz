@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/home.css">
     {{> essentials}}
+    <script type="text/javascript">
+    var decodedJSON = decodeURIComponent("{{{userJSON}}}")
+    var user = JSON.parse(decodedJSON)
+    </script>
     <script type="text/javascript" src="/js/home_ctrl.js"></script>
     <title></title>
   </head>

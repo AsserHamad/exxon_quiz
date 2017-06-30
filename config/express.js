@@ -62,7 +62,9 @@ module.exports = function(app, config) {
       res.status(err.status || 500);
       res.render('error', {
         message: err.message,
-        title: 'error'
+        layout: false,
+        status: err.status,
+        title: err.status+' Error'
       });
     });
   }
@@ -71,6 +73,7 @@ module.exports = function(app, config) {
     res.status(err.status || 500);
       res.render('error', {
         message: err.message,
+        layout: false,
         error: {},
         title: 'error'
       });
