@@ -22,18 +22,18 @@
 
     {{else}}
 
-    <div>
+    <div id="mobile-only">
       <input style="display:none" type="text" name="fakeusernameremembered"/>
       <input style="display:none" type="password" name="fakepasswordremembered"/>
 
       <p><h1><span id="login_text" class="check_text0">Login</span> <img id="check" src="../img/gaspistol_red.png" /> <span class="check_text1" id="reg_text">Register</span></h1></p>
-      <form id="log_reg">
+      <form id="log_reg" style="width:95%">
         <span id="err">*Must be a valid exxonmobil email</span>
-      <input class="center-block login_form" type="text" name="email" readonly onfocus="this.removeAttribute('readonly')" size="45"  placeholder="E-Mail Address"><br>
-      <input class="center-block login_form" name="password" type="password" size="45" placeholder="Password"><br>
-        <div class="form-inline">
-          <input class="reg_fields login_form" name="firstName" style="margin-right:1%;display:none" type="text" placeholder="First name">
-          <input class="reg_fields  login_form" name="lastName" style="margin-left:1%;margin-bottom:1.5%;display:none" type="text" placeholder="Last name">
+      <input class="center-block login_form" type="text" name="email" readonly onfocus="this.removeAttribute('readonly')" size="45"  placeholder="E-Mail Address" style="width:95%"><br>
+      <input class="center-block login_form" name="password" type="password" size="45" placeholder="Password" style="width:95%"><br>
+        <div class="form-inline" >
+          <input class="reg_fields login_form" name="firstName" style=" width:95%; margin-bottom:0.5em;display:none" type="text" placeholder="First name" >
+          <input class="reg_fields  login_form" name="lastName" style="width:95%; margin-bottom:3%;display:none" type="text" placeholder="Last name" >
         </div>
         <button id="submit_btn" type="submit" name="button">Submit</button>
       </form>
