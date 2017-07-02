@@ -125,3 +125,16 @@ const mongoose = require('mongoose')
       }
     })
   }
+
+  exports.topScore = (req, res) => {
+    Match.find({quizTaker: req.user})
+    .sort({score: -1})
+    .limit(1)
+    .exec((err, records) => {
+      var score = records[0].score;
+      Match.find({score:{$gt: score}}, (error, matches) => {
+        let count = matches.length;
+        res.json({score:score, ranking: count + 1})
+      })
+    })
+  }
