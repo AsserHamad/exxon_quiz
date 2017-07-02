@@ -74,6 +74,12 @@ UserSchema.statics.findSafely = function(query, done) {
   this.find(query, '-salt -password', done);
 }
 
+UserSchema.statics.myTopScore = function(user, callback){
+  this.findOne({quizTaker : user})
+  .sort('-score')
+  .exec(callback)
+}
+
 // Configure the 'UserSchema' to use getters and virtuals when transforming to JSON
 UserSchema.set('toJSON', {
 	getters: true,

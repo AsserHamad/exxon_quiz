@@ -77,9 +77,17 @@ body{
   filter: drop-shadow(0 0px 15px white);
 }
 #single_match{
-  display:none;
-  background-color: rgba(255,255,255,0.6);
-  height:40rem;
+  width:0%;
+  background-color: transparent;
+  color:transparent;
+  height:0rem;
+  border-radius: 0rem 1rem 1rem 1rem;
+  font-size:0rem;
+  cursor:default;
+}
+@keyframes show_quiz {
+  70%{width:70%;box-shadow:0px 0px 20px #F2F2F2;height:0rem;font-size:0rem;}
+  100%{height:40rem;box-shadow:0px 0px 20px #F2F2F2;font-size:3rem;background-color: #F2F2F2;color:black;width:70%;}
 }
 #button_multi{
   background-color: #BF0426;
@@ -97,10 +105,11 @@ body{
 }
 
 #logout{
+  text-decoration: none;
   position:fixed;
-  font-size:300%;
+  font-size:200%;
   color:white;
-  top:82%;
+  top:85%;
   left:45%;
   transition-duration:0.3s;
   padding:1% 2%;
@@ -109,7 +118,6 @@ body{
 
 }
 #logout:hover{
-  text-decoration: none;
   left:44%;
   top:81%;
   font-size: 400%;

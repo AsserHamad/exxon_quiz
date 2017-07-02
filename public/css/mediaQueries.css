@@ -1,5 +1,6 @@
 @media (max-width: 500px) {
   #mobile-only{
     width: 20rem;
+    font-size: 40%;
   }
 }
