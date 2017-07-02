@@ -10,6 +10,14 @@ exports.authenticated = (req, res, next) => {
   }
 }
 
+exports.authenticatedMatching = (req, res, next) => {
+  if(!authorized(req.user) || req.params.userID != req.user._id) {
+    next({message:"Unauthorized", status: 401})
+  } else {
+    next();
+  }
+}
+
 exports.authorizedAdmin = (req, res, next) => {
   if(authorized(req.user) && req.user.role == 'admin') {
     next();

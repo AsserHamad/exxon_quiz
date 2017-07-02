@@ -1,6 +1,7 @@
 const users = require('../controllers/users.controller'),
       middlewares = require('../middlewares.js'),
       {authenticated} = middlewares,
+      {authenticatedMatching} = middlewares,
       {authorizedAdmin} = middlewares
 
 module.exports = (app) => {
@@ -14,6 +15,8 @@ module.exports = (app) => {
   })
 
   app.get('/users/:userID/accept', authorizedAdmin, users.accept);
+  app.get('/users/:userID/topscore', authenticatedMatching, users.topScore);
+
 
   app.route('/users')
   .get(users.list);
