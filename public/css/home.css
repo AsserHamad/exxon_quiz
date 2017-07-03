@@ -56,13 +56,16 @@ body{
   color:white;
 }
 #clicks{
-  margin-top:34rem;
+  margin-top:10rem;
   width:70%;
   font-size: 6rem;
   cursor: pointer;
 }
+@keyframes clear_text {
+  @0%{font-size: 100%}
+  @100%{font-size:0%}
+}
 #button_single{
-
   background-color: #F2F2F2;
   border-radius:12rem 0rem 0rem 12rem;
   padding:5% 0%;
@@ -84,10 +87,11 @@ body{
   border-radius: 0rem 1rem 1rem 1rem;
   font-size:0rem;
   cursor:default;
+  padding-left:3%;
 }
 @keyframes show_quiz {
   70%{width:70%;box-shadow:0px 0px 20px #F2F2F2;height:0rem;font-size:0rem;}
-  100%{height:40rem;box-shadow:0px 0px 20px #F2F2F2;font-size:3rem;background-color: #F2F2F2;color:black;width:70%;}
+  100%{height:40rem;box-shadow:0px 0px 20px #F2F2F2;font-size:2rem;background-color: #F2F2F2;color:black;width:70%;}
 }
 #button_multi{
   background-color: #BF0426;
@@ -103,11 +107,23 @@ body{
   #button_multi:hover{
   filter: drop-shadow(0 0px 15px #BF0426);
 }
+#submit_btnn{
+  padding:2%;
+  background-color: #2A6DA6;
+  color:white;
+  font-weight: bold;
+  transition-duration: 0.3s;
+  border-radius:50rem;
+  border:none;
+}
+#submit_btn:hover{
+  background-color: red;
+}
 
 #logout{
   text-decoration: none;
   position:fixed;
-  font-size:200%;
+  font-size:150%;
   color:white;
   top:85%;
   left:45%;
@@ -118,9 +134,8 @@ body{
 
 }
 #logout:hover{
-  left:44%;
-  top:81%;
-  font-size: 400%;
+  font-size: 200%;
+  transform:translate(-1rem,-0.5rem);
 }
 #admin{
   position:fixed;
