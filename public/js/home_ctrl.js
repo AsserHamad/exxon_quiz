@@ -32,8 +32,48 @@ $('document').ready(function(){
   })
 
   $("#submit_btnn").on('click',() => {
-    
-    $("#single_match").html(JSON.stringify(questions));
-
+    $("#countdown").css('animation','show_countdown 1s forwards');
+    startQuiz();
+    startCountdown();
   })
 });
+let q_count = 0;
+let count_interval;
+function startQuiz(){
+  $("#single_match").html('<p>Question '+(q_count+1)+'</p><p>'+questions[q_count].text+'</p>')
+  for(var i=0;i<4;i++){
+    console.log(questions[0]);
+    let fun = (questions[q_count].choices[i] == questions[q_count].correctAnswer)?'correct':'wrong';
+    $("#single_match").html($("#single_match").html()+'<button class="col-xs-6 '+fun+'">'+JSON.stringify(questions[q_count].choices[i])+'</button>');
+  }
+  refreshClicks();
+}
+
+var count = 60;
+function refreshClicks(){
+  $(".correct").on('click',() => {
+    console.log('You clicked on the right answer woohoo');
+    if(q_count==9){done();clearInterval(count_interval);return}
+    q_count++;
+    startQuiz();
+  })
+  $(".wrong").on('click',() => {
+    console.log('You clicked on the wrong answer boohoo');
+    count-=5;
+    $("#countdown").html(count);
+  })
+}
+function startCountdown(){
+  count_interval = setInterval(() => {
+    $("#countdown").html(count);
+    count--;
+    if(count<=0){$("#countdown").html("Time's up!");clearInterval(count_interval);done();}
+
+  },1000);
+}
+function done(){
+  let score = 7*count+44*q_count;
+  console.log('Your socre is '+score);
+  $("#single_match").html('<p>Well Played!</p><p>Your total score iiiiis</p><p>'+score+'</p>');
+  $.post('/match')
+}

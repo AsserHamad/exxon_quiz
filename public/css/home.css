@@ -55,6 +55,22 @@ body{
   position:fixed;
   color:white;
 }
+#countdown{
+  position:fixed;
+  border-radius:50rem;
+  padding:2% 2.7%;
+  background-color:#F2F2F2;
+  top:60%;
+  left:-15%;
+  color:red;
+  font:bold 300% Bahiana;
+  z-index:1;
+  box-shadow:0px 0px 7px blue;
+}
+@keyframes show_countdown {
+  0%{left:-15%}
+  100%{left:15%}
+}
 #clicks{
   margin-top:10rem;
   width:70%;
@@ -116,7 +132,7 @@ body{
   border-radius:50rem;
   border:none;
 }
-#submit_btn:hover{
+#submit_btnn:hover{
   background-color: red;
 }
 
