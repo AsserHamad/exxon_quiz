@@ -40,11 +40,12 @@ $('document').ready(function(){
 let q_count = 0;
 let count_interval;
 function startQuiz(){
-  $("#single_match").html('<p>Question '+(q_count+1)+'</p><p>'+questions[q_count].text+'</p>')
+  $("#single_match").html('<p style="font-size:200%;font-family:Bahiana;color:red;margin-top:3%;margin-bottom:3%;">Question '+(q_count+1)+'</p><p id="question">'+questions[q_count].text+'</p>')
   for(var i=0;i<4;i++){
     console.log(questions[0]);
     let fun = (questions[q_count].choices[i] == questions[q_count].correctAnswer)?'correct':'wrong';
-    $("#single_match").html($("#single_match").html()+'<button class="col-xs-6 '+fun+'">'+JSON.stringify(questions[q_count].choices[i])+'</button>');
+    var x=(i==1)?"<br>":""
+    $("#single_match").html($("#single_match").html()+'<buttonwidth="70" class=" col-xs-6 text-center butt '+fun+'">'+JSON.stringify(questions[q_count].choices[i])+'</button>'+x);
   }
   refreshClicks();
 }
