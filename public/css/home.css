@@ -135,6 +135,7 @@ body{
   background-color: red;
   color:white;
   transition-duration:0.3s;
+  cursor:pointer;
 }
 .butt:hover{
   background-color:rgba(170,0,0,1);
