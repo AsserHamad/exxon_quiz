@@ -134,12 +134,15 @@ body{
   border-radius: 2rem;
   background-color: red;
   color:white;
-  transition-duration:0.3s;
+  transition-duration:0.1s;
   cursor:pointer;
 }
 .butt:hover{
   background-color:rgba(170,0,0,1);
-  box-shadow:0px 0px 5px rgba(0,0,255,0.4);
+  border-color:rgba(0,0,170,0.6);
+}
+.butt:visited{
+  background-color:rgba(170,0,0,1);
 }
 
 #submit_btnn{
