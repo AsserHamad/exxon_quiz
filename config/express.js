@@ -1,6 +1,7 @@
 const express = require('express'),
       glob = require('glob'),
       session = require('express-session'),
+      RedisStore = require('connect-redis')(session),
       passport = require('passport'),
       favicon = require('serve-favicon'),
       logger = require('morgan'),
@@ -31,6 +32,9 @@ module.exports = function(app, config) {
   }));
 
   app.use(session({
+    store: new RedisStore({
+      url: 'http://127.0.0.1:8080'
+    }),
 		saveUninitialized: true,
 		resave: true,
 		secret: config.app.sessionSecret
