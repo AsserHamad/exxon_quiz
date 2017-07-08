@@ -34,7 +34,7 @@ module.exports = function(app, config) {
 
   app.use(session({
     store: new MongoStore({
-      url: config.db
+      url: 'mongodb://heroku_c19br4kt:onl6thiq4bfitcraelb429f5tk@ds153422.mlab.com:53422/heroku_c19br4kt'
     }),
 		saveUninitialized: true,
 		resave: true,
