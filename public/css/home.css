@@ -163,10 +163,10 @@ body{
   position:fixed;
   font-size:150%;
   color:white;
-  top:85%;
-  left:45%;
+  top:80%;
+  left:5%;
   transition-duration:0.3s;
-  padding:1% 2%;
+  padding:3.1% 2%;
   border-radius:50rem;
   background-color:#00B2EE;
 
