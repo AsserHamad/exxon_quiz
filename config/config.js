@@ -33,7 +33,7 @@ var config = {
       adminPass: "admin55"
     },
     port: process.env.PORT || 3000,
-    db: 'mongodb://localhost/exxon-quiz-production'
+    db: 'mongodb://heroku_c19br4kt:onl6thiq4bfitcraelb429f5tk@ds153422.mlab.com:53422/heroku_c19br4kt'
   }
 };
 
