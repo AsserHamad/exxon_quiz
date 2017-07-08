@@ -8,8 +8,7 @@
     "test": "cross-env NODE_ENV=test mocha --reporter spec app/tests",
     "test:coverage": "nyc npm test",
     "test:unit": "mocha --recursive test/middleware test/models test/routes",
-    "test:integration": "mocha --recursive test/integration",
-    "postinstall": "gulp mkadmin"
+    "test:integration": "mocha --recursive test/integration"
   },
   "dependencies": {
     "async-each-series": "^1.1.0",
