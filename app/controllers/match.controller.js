@@ -1,6 +1,4 @@
 
-exports.genMatch = (req, res, next) => {
-  console.log('hi'
-  );
-}
+exports.postMatch = (req, res, next) => {
   
+}

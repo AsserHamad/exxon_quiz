@@ -74,6 +74,7 @@ function startCountdown(){
 }
 function done(){
   let score = 7*count+44*q_count;
+  
   console.log('Your socre is '+score);
   $("#single_match").html('<p class="text-center" style="font-family:Bahiana;color:red;font-size:300%;margin-top:7%;">Well Played!</p><p class="text-center" style="font-size:200%;">Your total score iiiiis</p><p class="text-center" style="font-size:500%;color:blue;font-family:Bahiana">'+score+'</p>');
   $.post('/match')
