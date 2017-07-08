@@ -112,7 +112,7 @@ const mongoose = require('mongoose')
   exports.leaderboards = (req, res, next) => {
     console.log('yoo');
     Match.count((error, value) => {
-      if (req.params.pageNum * 20 > value)
+      if (req.params.pageNum  * 20 > value)
         return next({status: 404}); // change next to json if you want to handle this dynamically
       if (req.params.pageNum == 1)
         Match.top20(0, (err, values) => {
@@ -131,6 +131,10 @@ const mongoose = require('mongoose')
     .sort({score: -1})
     .limit(1)
     .exec((err, records) => {
+      if(err)
+        return res.status(500).json({});
+      if(!records)
+        return res.json({})
       var score = records[0].score;
       Match.find({score:{$gt: score}}, (error, matches) => {
         let count = matches.length;

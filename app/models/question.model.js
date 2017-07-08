@@ -34,10 +34,14 @@ QuestionSchema.statics.randomTen = function(done) {
   var output = []
   var values = []
   var ctxt = this
+  var randomNums = []
   this.count((error, value) => {
-    for(let i = 0; i<10; i++) {
+    for(let i = 0; i<10;) {
       let random = Math.floor(Math.random() * value) + 1
-      values.push(random)
+      if(!randomNums.includes(random)) {
+        values.push(random)
+        i++;
+      }
     }
       each(values, function (el, next) {
         ctxt.findOne({_id: el}, (err,value) => {

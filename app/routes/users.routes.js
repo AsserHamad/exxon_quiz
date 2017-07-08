@@ -18,8 +18,7 @@ module.exports = (app) => {
   app.get('/users/:userID/topscore', authenticatedMatching, users.topScore);
 
 
-  app.route('/users')
-  .get(users.list);
+  app.get('/users', users.list);
 
   app.get('/leaderboards/:value', (req, res, next) => {
     if(!Number(req.params.value))
