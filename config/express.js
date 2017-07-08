@@ -12,6 +12,7 @@ const express = require('express'),
       exphbs  = require('express-handlebars');
 
 module.exports = function(app, config) {
+  console.log('zaaa configgoooooo ' + config);
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
   app.locals.ENV_DEVELOPMENT = env == 'development';
