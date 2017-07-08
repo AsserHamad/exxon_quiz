@@ -11,6 +11,7 @@ exports.main = (req, res, next) => {
 };
 
 exports.home = (req, res, next) => {
+  console.log('the user is ' + req.user);
   res.render('home', {
     title: "Home Page",
     layout: false,

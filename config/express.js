@@ -1,7 +1,7 @@
 const express = require('express'),
       glob = require('glob'),
       session = require('express-session'),
-      RedisStore = require('connect-redis')(session),
+      MongoStore = require('connect-mongo')(session),
       passport = require('passport'),
       favicon = require('serve-favicon'),
       logger = require('morgan'),
@@ -32,8 +32,8 @@ module.exports = function(app, config) {
   }));
 
   app.use(session({
-    store: new RedisStore({
-      url: 'http://127.0.0.1:8080'
+    store: new MongoStore({
+      url: config.db
     }),
 		saveUninitialized: true,
 		resave: true,
@@ -43,7 +43,6 @@ module.exports = function(app, config) {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  app.use(cookieParser());
   app.use(compress());
   app.use(express.static(config.root + '/public'));
   app.use(methodOverride());
