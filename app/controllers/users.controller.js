@@ -112,11 +112,11 @@ const mongoose = require('mongoose')
   exports.leaderboards = (req, res, next) => {
     console.log('yoo');
     Match.count((error, value) => {
-      if(error || !value)
-        return next({status: 404});
-
+      if(error)
+        return res.status(500).json({error: 'err'});
+      
       if (req.params.pageNum  * 20 > value)
-        return next({status: 404}); // change next to json if you want to handle this dynamically
+        return res.status(404)json({res: 'not found'}); // change next to json if you want to handle this dynamically
       if (req.params.pageNum == 1)
         Match.top20(0, (err, values) => {
           res.json({values: values, count: value})
