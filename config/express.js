@@ -31,10 +31,13 @@ module.exports = function(app, config, mongoose) {
     extended: true
   }));
 
+  const daStore = new MongoStore({
+    mongooseConnection: mongoose.connections[0]
+  })
+
+  console.log(daStore);
   app.use(session({
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection
-    }),
+    store: daStore,
 		saveUninitialized: true,
 		resave: true,
 		secret: config.app.sessionSecret
