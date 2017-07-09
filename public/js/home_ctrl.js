@@ -36,6 +36,7 @@ $('document').ready(function(){
     console.log('Your actual top score is '+res.score);
   })
   .fail((err) => {
+    $("#yourTopScore").html('0');
     topScore = 0;
   })
 
