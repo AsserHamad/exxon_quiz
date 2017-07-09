@@ -26,7 +26,9 @@ $('document').ready(function(){
     },1500);
   });
   $.get('/questions').done((res) => {
-    questions=(res.length>0)?res:alert("No questions yet :/ the quiz is unplayable now");
+    questions=(res.length>=10)?res:alert("Not enough questions yet :/ the quiz is unplayable now");
+    $("#button_single").html();
+    $("#button_multi").html();
   })
   $.get('/users/'+user._id+'/topscore')
   .done((res) => {
