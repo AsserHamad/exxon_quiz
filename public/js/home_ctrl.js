@@ -15,7 +15,13 @@ $('document').ready(function(){
     },1500);
   });
   $("#button_multi").on('click',function(){
-    alert('You got friends, eh?');
+    $("#button_single").animate({opacity: 0, width: 0, display:'none'}, 500);
+    $("#trophy").animate({left:'75%'},3000);
+    $("#clicks").animate({marginTop:'3rem',width: '80%'},1000);
+    $("#button_multi").css('animation','multi_transition 2s forwards');
+     setTimeout(() => {
+      $("#single_match").css('animation','show_quiz 2s forwards');
+    },1500);
   });
   $.get('/questions').done((res) => {
     questions=(res.length>0)?res:alert("No questions yet :/ the quiz is unplayable now");
