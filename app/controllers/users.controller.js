@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
   User = mongoose.model('User'),
   passport = require('passport'),
-  Match = mongoose.model('Match')
+  Match = mongoose.model('Match'),
+  Question = mongoose.model('Question');
 
   const getErrorMessage = function(err, unique) {
     // Define the error message variable
@@ -137,11 +138,29 @@ const mongoose = require('mongoose')
       if(err)
         return res.status(500).json({});
       if(!records || !records.length > 0)
-        return res.json({})
+        return res.status(404).json({})
       var score = records[0].score;
       Match.find({score:{$gt: score}}, (error, matches) => {
         let count = matches.length;
         res.json({score:score, ranking: count + 1})
       })
+    })
+  }
+
+  exports.addQuestion = (req, res) => {
+    const choices = [req.body.choice1, req.body.choice2, req.body.choice3, req.body.choice4]
+    const newQuestion = new Question({
+      text: req.body.text,
+      choices: choices,
+      correctAnswer: req.body.correctAnswer
+    })
+
+    newQuestion.save((error, question) => {
+      console.log(error);
+      if(!error)
+        res.json({response: 'thank you'});
+      else {
+        res.status(500).json({error: 'there is an error'})
+      }
     })
   }

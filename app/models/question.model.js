@@ -35,28 +35,44 @@ QuestionSchema.statics.randomTen = function(done) {
   var values = []
   var ctxt = this
   var randomNums = []
-  this.count((error, value) => {
-    for(let i = 0; i<10;) {
-      let random = Math.floor(Math.random() * value) + 1
-      if(!randomNums.includes(random)) {
-        values.push(random)
-        i++;
+  // this.count((error, value) => {
+  //   for(let i = 0; i<10;) {
+  //     let random = Math.floor(Math.random() * value) + 1
+  //     if(!randomNums.includes(random)) {
+  //       values.push(random)
+  //       i++;
+  //     }
+  //   }
+  //     each(values, function (el, next) {
+  //       ctxt.findOne({_id: el}, (err,value) => {
+  //         console.log(el);
+  //         if(!value)
+  //           console.log('dooh');
+  //         output.push(value)
+  //         next()
+  //       })
+  //     }, function (err) {
+  //       console.log('done');
+  //       done(output)
+  //     })
+  //
+  //     })
+  // TODO: Make this more efficient
+  var randomNums = []
+  var values = []
+    this.find((error, questions) => {
+      if(error)
+        return done(error);
+      for(var i = 0 ; i<10 && i < questions.length ;) {
+        let random = Math.floor(Math.random() * questions.length)
+            if(!randomNums.includes(random)) {
+              values.push(questions[random])
+              randomNums.push(random)
+              i++;
+            }
       }
-    }
-      each(values, function (el, next) {
-        ctxt.findOne({_id: el}, (err,value) => {
-          console.log(el);
-          if(!value)
-            console.log('dooh');
-          output.push(value)
-          next()
-        })
-      }, function (err) {
-        console.log('done');
-        done(output)
-      })
-
-      })
+      done(null, values)
+    })
     }
 
 QuestionSchema.plugin(AutoIncrement)

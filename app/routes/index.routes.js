@@ -1,13 +1,17 @@
 const index = require('../controllers/index.controller'),
-      {authenticated} = require('../middlewares.js');
+      users = require('../controllers/users.controller'),
+      middlewares = require('../middlewares.js'),
+      {authenticated} = middlewares,
+      {authorizedAdmin} = middlewares;
 
 module.exports = (app) => {
-
-  console.log('in the rouuutes');
 
   app.get('/', index.main);
   //TODO: Uncomment
   app.get('/home', authenticated, index.home)
 
-  app.get('/questions', index.listQuestions)
+  app.route('/questions')
+  .get(index.listQuestions)
+  .post(authorizedAdmin, users.addQuestion);
+
 }
