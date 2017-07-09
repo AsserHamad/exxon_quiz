@@ -89,7 +89,7 @@ $('document').ready(function(){
     $("#single_match").html('<p class="text-center" style="font-family:Bahiana;color:red;font-size:300%;margin-top:7%;">Well Played!</p><p class="text-center" style="font-size:200%;">Your total score iiiiis</p><p class="text-center" style="font-size:500%;color:blue;font-family:Bahiana">'+score+'</p>\
     <script>$("#play_again").on("click",() => {\
       window.location = "/home"\
-    });</script><button id="play_again">Play Again</button>');
+    });</script><button id="play_again" class="btn btn-danger center-block">Play Again</button>');
     $.post('/match',{_id:user.id,score:score});
   }
 });

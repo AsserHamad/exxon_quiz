@@ -58,21 +58,22 @@ $("#login_text").on('click', () => {
   $(".reg").hide();
 })
 $("#submit_btn").click(() => {
-  var x = $("#log_reg").serialize();
-  if(checked){x.role=reg_type;reg(x)}else{login(x);}
+  var x = $("#log_reg").serialize()
+  console.log(x);
+  checked ? reg(x) : login(x);
 })
 function lol(){
   $(".reg_unselected").click(() => {
-    if(reg_type=="User"){reg_type="Admin";alternate(true)}else{reg_type="User";alternate(false)}
+    if(reg_type=="user"){reg_type="admin";alternate(true)}else{reg_type="user";alternate(false)}
     //  lol();
   })
   $(".reg_selected").click(() => {
   })
 }
-var reg_type = "User";
+var reg_type = "user";
 lol()
 $(".reg_unselected").click(() => {
-  if(reg_type=="User"){reg_type="Admin";alternate(true)}else{reg_type="User";alternate(false)}
+  if(reg_type=="user"){reg_type="admin";alternate(true)}else{reg_type="user";alternate(false)}
   lol();
 })
 function alternate(bull){
