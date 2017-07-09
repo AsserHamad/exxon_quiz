@@ -26,6 +26,7 @@ module.exports = function(app, config, mongoose) {
 
   // app.use(favicon(config.root + '/public/img/ex.ico'));
   app.use(logger('dev'));
+
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
     extended: true
