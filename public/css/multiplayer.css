@@ -1,0 +1,10 @@
+#create_room, #join_room{
+  border-radius:2rem;
+  padding:2% 0%;
+  cursor:pointer;
+  transition-duration:0.3s;
+}
+#create_room:hover, #join_room:hover{
+  background-color: white;
+  color:#BF0426;
+}

@@ -20,7 +20,9 @@ $('document').ready(function(){
     $("#clicks").animate({marginTop:'3rem',width: '80%'},1000);
     $("#button_multi").css('animation','multi_transition 2s forwards');
      setTimeout(() => {
-      $("#single_match").css('animation','show_quiz 2s forwards');
+      $("#multi_match").css('animation','show_quiz_multi 2s forwards');
+      $("#create_room").css('border','2px solid white');
+      $("#join_room").css('border','2px solid white');
     },1500);
   });
   $.get('/questions').done((res) => {
@@ -81,5 +83,5 @@ function done(){
 
   console.log('Your socre is '+score);
   $("#single_match").html('<p class="text-center" style="font-family:Bahiana;color:red;font-size:300%;margin-top:7%;">Well Played!</p><p class="text-center" style="font-size:200%;">Your total score iiiiis</p><p class="text-center" style="font-size:500%;color:blue;font-family:Bahiana">'+score+'</p>');
-  $.post('/match')
+  $.post('/match',{_id:user.id,score:score});
 }

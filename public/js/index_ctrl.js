@@ -66,9 +66,11 @@ function lol(){
     if(reg_type=="User"){reg_type="Admin";alternate(true)}else{reg_type="User";alternate(false)}
     //  lol();
   })
+  $(".reg_selected").click(() => {
+  })
 }
-lol()
 var reg_type = "User";
+lol()
 $(".reg_unselected").click(() => {
   if(reg_type=="User"){reg_type="Admin";alternate(true)}else{reg_type="User";alternate(false)}
   lol();

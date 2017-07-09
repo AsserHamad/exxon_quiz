@@ -3,7 +3,7 @@ const express = require('express'),
       session = require('express-session'),
       MongoDBStore = require('connect-mongodb-session')(session),
       passport = require('passport'),
-      favicon = require('serve-favicon'),
+      // favicon = require('serve-favicon'),
       logger = require('morgan'),
       cookieParser = require('cookie-parser'),
       bodyParser = require('body-parser'),
@@ -24,7 +24,7 @@ module.exports = function(app, config, mongoose) {
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'handlebars');
 
-  app.use(favicon(config.root + '/public/img/ex.ico'));
+  // app.use(favicon(config.root + '/public/img/ex.ico'));
   app.use(logger('dev'));
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({

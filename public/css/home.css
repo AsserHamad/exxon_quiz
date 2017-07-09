@@ -124,9 +124,24 @@ body{
   cursor:default;
   padding-left:3%;
 }
+#multi_match{
+  width:0%;
+  background-color: transparent;
+  color:transparent;
+  height:0rem;
+  border-radius: 0rem 1rem 1rem 1rem;
+  font-size:0rem;
+  cursor:default;
+  padding-left:3%;
+  margin-left:-5%;
+}
 @keyframes show_quiz {
   70%{width:70%;box-shadow:0px 0px 20px #F2F2F2;height:0rem;font-size:0rem;}
   100%{height:40rem;box-shadow:0px 0px 20px #F2F2F2;font-size:2rem;background-color: #F2F2F2;color:black;width:70%;}
+}
+@keyframes show_quiz_multi {
+  70%{width:70%;box-shadow:0px 0px 20px #BF0426;height:0rem;font-size:0rem;}
+  100%{height:40rem;box-shadow:0px 0px 20px #BF0426;font-size:2rem;background-color: #BF0426;color:white;width:70%;}
 }
 #button_multi{
   background-color: #BF0426;
