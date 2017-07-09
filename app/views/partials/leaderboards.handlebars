@@ -8,7 +8,7 @@
         if(first){first=false;$("#allTimeTopScore").html(Math.floor(res.values[i].score));}
         console.log(res.values[i]);
         $("#name_"+i).html(res.values[i].quizTaker.fullName);
-        $("#score_"+i).html(res.values[i].score);
+        $("#score_"+i).html(Math.floor(res.values[i].score));
       }
     })
 

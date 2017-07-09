@@ -7,6 +7,7 @@ $('document').ready(function(){
   if(user)$("#admin").css('display',(user.role=='admin')?'inline' :'none');
   $("#button_single").on('click',function(){
     $("#button_multi").animate({opacity: 0, width: 0, display:'none'}, 500);
+    $("#trophy").animate({left:'75%'},3000);
     $("#clicks").animate({marginTop:'3rem',width: '80%'},1000);
     $("#button_single").css('animation','single_transition 2s forwards');
      setTimeout(() => {
@@ -74,7 +75,7 @@ function startCountdown(){
 }
 function done(){
   let score = 7*count+44*q_count;
-  
+
   console.log('Your socre is '+score);
   $("#single_match").html('<p class="text-center" style="font-family:Bahiana;color:red;font-size:300%;margin-top:7%;">Well Played!</p><p class="text-center" style="font-size:200%;">Your total score iiiiis</p><p class="text-center" style="font-size:500%;color:blue;font-family:Bahiana">'+score+'</p>');
   $.post('/match')

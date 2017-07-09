@@ -44,7 +44,7 @@ $("#reg_text").on('click', () => {
     $("#reg_text").addClass("check_text0");
     $("#check").css({transform:'rotate(180deg)'});
     $("#check").css({animation:'shaking_tire1 2s ease infinite'});
-    $(".reg_fields").show();
+    $(".reg").show();
 })
 
 $("#login_text").on('click', () => {
@@ -55,12 +55,31 @@ $("#login_text").on('click', () => {
   $("#reg_text").addClass("check_text1");
   $("#check").css({transform:'rotate(0deg)'});
   $("#check").css({animation:'shaking_tire0 2s ease infinite'});
-  $(".reg_fields").hide();
+  $(".reg").hide();
 })
-
 $("#submit_btn").click(() => {
-  checked ? reg($("#log_reg").serialize()) : login($("#log_reg").serialize());
-});
+  var x = $("#log_reg").serialize();
+  if(checked){x.role=reg_type;reg(x)}else{login(x);}
+})
+function lol(){
+  $(".reg_unselected").click(() => {
+    if(reg_type=="User"){reg_type="Admin";alternate(true)}else{reg_type="User";alternate(false)}
+    //  lol();
+  })
+}
+lol()
+var reg_type = "User";
+$(".reg_unselected").click(() => {
+  if(reg_type=="User"){reg_type="Admin";alternate(true)}else{reg_type="User";alternate(false)}
+  lol();
+})
+function alternate(bull){
+  console.log("dont touch me you "+reg_type);
+  if(bull){$("#as_user").removeClass("reg_selected");$("#as_user").addClass("reg_unselected");
+        $("#as_admin").removeClass("reg_unselected");$("#as_admin").addClass("reg_selected");}
+      else{$("#as_user").removeClass("reg_unselected");$("#as_user").addClass("reg_selected");
+        $("#as_admin").removeClass("reg_selected");$("#as_admin").addClass("reg_unselected");}
+}
 
 $("#register_div").on('keyup', (e) => {
   if (e.keyCode === 13){

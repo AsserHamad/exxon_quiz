@@ -31,9 +31,11 @@
         <span id="err">*Must be a valid exxonmobil email</span>
       <input class="center-block login_form" type="text" name="email" readonly onfocus="this.removeAttribute('readonly')" size="45"  placeholder="E-Mail Address" style="width:50%"><br>
       <input class="center-block login_form" name="password" type="password" size="45" placeholder="Password" style="width:50%"><br>
-        <div class="form-inline" >
-          <input class="reg_fields login_form" name="firstName" style="margin-bottom:0.5em;display:none" type="text" placeholder="First name" >
-          <input class="reg_fields  login_form" name="lastName" style="margin-bottom:3%;display:none" type="text" placeholder="Last name" >
+        <div class="form-inline">
+          <span class="reg" style="display:none">You are registering as:</span><br>
+          <span class="reg" style="display:none"><span id="as_user" class="reg_selected" style="margin-right:10%;">User</span><span id="as_admin" class="reg_unselected">Admin</span></span><br>
+          <input class="reg reg_fields login_form" name="firstName" style="margin-bottom:0.5em;display:none" type="text" placeholder="First name" >
+          <input class="reg reg_fields  login_form" name="lastName" style="margin-bottom:3%;display:none" type="text" placeholder="Last name" ><br>
         </div>
         <input id="submit_btn" type="button" value="Submit" name="button"/>
       </form>
