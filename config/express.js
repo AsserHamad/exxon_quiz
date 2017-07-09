@@ -33,7 +33,7 @@ module.exports = function(app, config, db) {
 
   app.use(session({
     store: new MongoStore({
-      mongooseConnection: db.connection
+      mongooseConnection: db
     }),
 		saveUninitialized: true,
 		resave: true,
