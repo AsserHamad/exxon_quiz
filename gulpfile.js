@@ -62,6 +62,19 @@ const User = mongoose.model('User'),
     })
   })
 
+  // gulp.task('genNormalQuestions', () => {
+  //   const question1 = ;
+  //   const question1 = ;
+  //   const question1 = ;
+  //   const question1 = ;
+  //   const question1 = ;
+  //   const question1 = ;
+  //   const question1 = ;
+  //   const question1 = ;
+  //   const question1 = ;
+  //
+  // })
+
   gulp.task('mkadmin', () => {
     const user = new User({
       firstName: 'Master',
