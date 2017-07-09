@@ -26,8 +26,8 @@ $('document').ready(function(){
     },1500);
   });
   $.get('/questions').done((res) => {
-    questions=(res.length>=10)?res:alert("Not enough questions yet :/ the quiz is unplayable now");
-    $("#clicks").html("");
+    questions=(res.length>=10)?res:$("#clicks").html("Not enough Questions lol");
+
   })
   $.get('/users/'+user._id+'/topscore')
   .done((res) => {
@@ -40,50 +40,56 @@ $('document').ready(function(){
   })
 
   $("#submit_btnn").on('click',() => {
+    sub();
+  })
+  function sub(){
     $("#countdown").css('animation','show_countdown 1s forwards');
     startQuiz();
     startCountdown();
-  })
-});
-let q_count = 0;
-let count_interval;
-function startQuiz(){
-  $("#single_match").html('<p style="font-size:200%;font-family:Bahiana;color:red;margin-top:3%;margin-bottom:3%;">Question '+(q_count+1)+'</p><p id="question">'+questions[q_count].text+'</p>')
-  for(var i=0;i<4;i++){
-    console.log(questions[0]);
-    let fun = (questions[q_count].choices[i] == questions[q_count].correctAnswer)?'correct':'wrong';
-    var x=(i==1)?"<br>":""
-    $("#single_match").html($("#single_match").html()+'<buttonwidth="70" class=" col-xs-6 text-center butt '+fun+'">'+JSON.stringify(questions[q_count].choices[i])+'</button>'+x);
   }
-  refreshClicks();
-}
 
-var count = 60;
-function refreshClicks(){
-  $(".correct").on('click',() => {
-    console.log('You clicked on the right answer woohoo');
-    if(q_count==9){done();clearInterval(count_interval);return}
-    q_count++;
-    startQuiz();
-  })
-  $(".wrong").on('click',() => {
-    console.log('You clicked on the wrong answer boohoo');
-    count-=5;
-    $("#countdown").html(count);
-  })
-}
-function startCountdown(){
-  count_interval = setInterval(() => {
-    $("#countdown").html(count);
-    count--;
-    if(count<=0){$("#countdown").html("Time's up!");clearInterval(count_interval);done();}
+  let q_count = 0;
+  let count_interval;
+  function startQuiz(){
+    $("#single_match").html('<p style="font-size:200%;font-family:Bahiana;color:red;margin-top:3%;margin-bottom:3%;">Question '+(q_count+1)+'</p><p id="question">'+questions[q_count].text+'</p>')
+    for(var i=0;i<4;i++){
+      console.log(questions[0]);
+      let fun = (questions[q_count].choices[i] == questions[q_count].correctAnswer)?'correct':'wrong';
+      var x=(i==1)?"<br>":""
+      $("#single_match").html($("#single_match").html()+'<buttonwidth="70" class=" col-xs-6 text-center butt '+fun+'">'+JSON.stringify(questions[q_count].choices[i])+'</button>'+x);
+    }
+    refreshClicks();
+  }
 
-  },1000);
-}
-function done(){
-  let score = 7*count+44*q_count;
+  var count = 60;
+  function refreshClicks(){
+    $(".correct").on('click',() => {
+      console.log('You clicked on the right answer woohoo');
+      if(q_count==9){done();clearInterval(count_interval);return}
+      q_count++;
+      startQuiz();
+    })
+    $(".wrong").on('click',() => {
+      console.log('You clicked on the wrong answer boohoo');
+      count-=5;
+      $("#countdown").html(count);
+    })
+  }
+  function startCountdown(){
+    count_interval = setInterval(() => {
+      $("#countdown").html(count);
+      count--;
+      if(count<=0){$("#countdown").html("Time's up!");clearInterval(count_interval);done();}
 
-  console.log('Your socre is '+score);
-  $("#single_match").html('<p class="text-center" style="font-family:Bahiana;color:red;font-size:300%;margin-top:7%;">Well Played!</p><p class="text-center" style="font-size:200%;">Your total score iiiiis</p><p class="text-center" style="font-size:500%;color:blue;font-family:Bahiana">'+score+'</p>');
-  $.post('/match',{_id:user.id,score:score});
-}
+    },1000);
+  }
+  function done(){
+    let score = 7*count+44*q_count;
+
+    $("#single_match").html('<p class="text-center" style="font-family:Bahiana;color:red;font-size:300%;margin-top:7%;">Well Played!</p><p class="text-center" style="font-size:200%;">Your total score iiiiis</p><p class="text-center" style="font-size:500%;color:blue;font-family:Bahiana">'+score+'</p>\
+    <script>$("#play_again").on("click",() => {\
+      window.location = "/home"\
+    });</script><button id="play_again">Play Again</button>');
+    $.post('/match',{_id:user.id,score:score});
+  }
+});
