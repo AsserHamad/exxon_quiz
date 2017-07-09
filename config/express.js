@@ -11,8 +11,7 @@ const express = require('express'),
       methodOverride = require('method-override'),
       exphbs  = require('express-handlebars');
 
-module.exports = function(app, config) {
-  console.log('zaaa configgoooooo ' + config);
+module.exports = function(app, config, mongoose) {
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
   app.locals.ENV_DEVELOPMENT = env == 'development';
@@ -33,9 +32,9 @@ module.exports = function(app, config) {
   }));
 
   app.use(session({
-    // store: new MongoStore({
-    // url: process.env.MONGOLAB_URI || config.db
-    // }),
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection
+    }),
 		saveUninitialized: true,
 		resave: true,
 		secret: config.app.sessionSecret
@@ -44,6 +43,7 @@ module.exports = function(app, config) {
   app.use(passport.initialize());
   app.use(passport.session());
 
+  app.use(cookieParser());
   app.use(compress());
   app.use(express.static(config.root + '/public'));
   app.use(methodOverride());
