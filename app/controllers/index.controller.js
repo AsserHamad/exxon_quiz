@@ -14,7 +14,7 @@ exports.main = (req, res, next) => {
 exports.home = (req, res, next) => {
   console.log('the user is ' + req.user);
   res.render('home', {
-    title: "Home Page",
+    title: req.user.firstName+"'s Home Page",
     layout: false,
     userJSON : encodeURIComponent(JSON.stringify(req.user))
   })

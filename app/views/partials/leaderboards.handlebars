@@ -4,7 +4,7 @@
   $.get("/leaderboards")
     .done((res) => {
       var first = true;
-      for(var i=0;i<res.length && i<5;i++) {
+      for(var i=0;i<res.values.length && i<5;i++) {
         if(first){first=false;$("#allTimeTopScore").html(Math.floor(res.values[i].score));}
         console.log(res.values[i]);
         $("#name_"+i).html(res.values[i].quizTaker.fullName);
@@ -12,9 +12,11 @@
       }
     })
     .fail((err) => {
-      var first = true;
+
+      $("#allTimeTopScore").html('0');
+      console.log("ERROR LOOOOOOOOOOOOOOOOOL")
       for(var i=0;i<5;i++) {
-        if(first){first=false;$("#allTimeTopScore").html(0);}
+        if(first){first=false;}
         $("#name_"+i).html("");
         $("#score_"+i).html("");
       }

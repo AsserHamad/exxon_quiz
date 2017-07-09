@@ -18,9 +18,7 @@ $('document').ready(function(){
     alert('You got friends, eh?');
   });
   $.get('/questions').done((res) => {
-    questions = res;
-  }).fail((err) => {
-    alert('BEEP BOOP ERROR '+err);
+    questions=(res.length>0)?res:alert("No questions yet :/ the quiz is unplayable now");
   })
   $.get('/users/'+user._id+'/topscore')
   .done((res) => {
