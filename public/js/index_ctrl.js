@@ -58,7 +58,7 @@ $("#login_text").on('click', () => {
   $(".reg").hide();
 })
 $("#submit_btn").click(() => {
-  var x = $("#log_reg").serialize()
+  var x = $("#log_reg").serialize() + "&role="+reg_type
   console.log(x);
   checked ? reg(x) : login(x);
 })

@@ -23,6 +23,7 @@ module.exports = function() {
 
   	// Use the Passport's Local strategy
   	passport.use(new LocalStrategy({usernameField: 'email'},((email, password, done) => {
+      console.log('za password '+ password);
   		// Use the 'User' model 'findOne' method to find a user with the current username
   		User.findOne({
   			email: email
@@ -41,10 +42,13 @@ module.exports = function() {
 
   			// If the passport is incorrect, continue to the next middleware with an error message
   			if (!user.authenticate(password)) {
+          console.log('hiii');
   				return done(null, false, {
   					message: 'Invalid Password'
   				});
-  			}
+  			} else {
+          console.log('yess wohoooo');
+        }
 
   			// Otherwise, continue to the next middleware with the user object
         user.salt = null;

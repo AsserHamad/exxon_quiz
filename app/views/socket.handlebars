@@ -10,6 +10,9 @@
       var socket = io()
         var x = prompt()
         socket.emit('message', x)
+        socket.on('start', (msg) => {
+          alert(msg);;
+        })
     </script>
   </body>
 </html>

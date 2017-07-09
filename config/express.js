@@ -70,30 +70,27 @@ module.exports = function(app, config, http) {
 
   io.on('connection', function (socket) {
 
-    socket.on('message', (msg) => {
-      console.log(msg);
-    })
-    // console.log('woaaaaaah');
-    // if(Object.keys(io.rooms).length === 0 && io.rooms.constructor === Object) {
-    //   socket.join('room1')
-    //   io.to('room1').emit('hello people welcome to room1')
-    // }
-    // else {
-    //   var largest = 'room0'
-    //   for (i in io.rooms) {
-    //     if(io.rooms[i].length < 5) {
-    //       socket.join(io.rooms[i])
-    //       return;
-    //     } else {
-    //       if(i > largest)
-    //         largest = i;
-    //     }
-    //   }
-    //   var arr = largest.split("")
-    //   var lastValue = arr.pop();
-    //   var room = arr.join("") + (Number(lastValue) + 1)
-    //   socket.join(room)
-    // }
+
+    if(Object.keys(io.sockets.adapter.rooms).length === 0 && io.sockets.adapter.rooms.constructor === Object) {
+      socket.join('room1')
+      io.to('room1').emit('start', 'hello people welcome to room1')
+    }
+    else {
+      var largest = 'room0'
+      for (i in io.sockets.adapter.rooms) {
+        if(io.sockets.adapter.rooms[i].length < 5) {
+          socket.join(io.sockets.adapter.rooms[i])
+          return;
+        } else {
+          if(i > largest)
+            largest = i;
+        }
+      }
+      var arr = largest.split("")
+      var lastValue = arr.pop();
+      var room = arr.join("") + (Number(lastValue) + 1)
+      socket.join(room)
+    }
 
   })
 

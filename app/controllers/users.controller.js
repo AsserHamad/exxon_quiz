@@ -34,7 +34,7 @@ const mongoose = require('mongoose')
 
   exports.signup = (req, res) => {
     const user = new User(req.body);
-
+    console.log('the signup attempt ' + JSON.stringify(req.body));
     // Try saving the User
     user.save((err) => {
       if (err) {
@@ -59,6 +59,7 @@ const mongoose = require('mongoose')
   }
 
   exports.signin = (req, res) => {
+    console.log(' the login attempt ' +JSON.stringify(req.body));
     passport.authenticate('local', (err, user, info) => {
       if (err)
         return res.json({err: err});
@@ -73,6 +74,7 @@ const mongoose = require('mongoose')
             // TODO: render the new view (res.render('newView',{user:user}))
             res.json({accepted: false, not_accepted: 'Please wait for your account to be accepted by an admin'});
           } else {
+            console.log('hiii');
             res.json({accepted: true, user: user});
           }
         });
@@ -93,20 +95,11 @@ const mongoose = require('mongoose')
 
   exports.accept = (req, res) => {
     console.log(req.params.userID);
-      User.findOne({
+      User.update({
         _id: req.params.userID
-      }, (err, user) => {
-        if (err) {
-          console.log('err from acceptance' + err);
-          res.status(500).send('something went wrong');
-        } else if (!user) {
-          res.status(404).send("unkown user!");
-        } else {
-          user.accepted = true;
-          user.save(() => {
-            res.send("Accepted!");
-          })
-        }
+      }, { $set: { accepted: true }}, () => {
+        console.log('hi');
+        res.json({accepted: true})
       })
   }
 
