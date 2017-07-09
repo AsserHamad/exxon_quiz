@@ -4,9 +4,9 @@
   "private": true,
   "main": "app.js",
   "scripts": {
+    "postinstall": "cd connect-mongodb-session && npm install && cd ..",
     "start": "node app.js",
     "test": "cross-env NODE_ENV=test mocha --reporter spec app/tests",
-    "postinstall": "cd connect-mongodb-session && npm install && cd ..",
     "test:coverage": "nyc npm test",
     "test:unit": "mocha --recursive test/middleware test/models test/routes",
     "test:integration": "mocha --recursive test/integration"
