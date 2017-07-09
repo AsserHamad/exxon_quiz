@@ -109,8 +109,8 @@ const mongoose = require('mongoose')
       if(error)
         return res.status(500).json({error: 'err'});
 
-      if (req.params.pageNum  * 20 > value)
-        return res.status(404).json({res: 'not found'}); // change next to json if you want to handle this dynamically
+      // if (req.params.pageNum  * 20 > value)
+      //   return res.status(404).json({res: 'not found'}); // change next to json if you want to handle this dynamically
       if (req.params.pageNum == 1)
         Match.top20(0, (err, values) => {
           res.json({values: values, count: value})
