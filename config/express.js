@@ -31,10 +31,7 @@ module.exports = function(app, config, mongoose) {
     extended: true
   }));
 
-  const daStore = new MongoStore({
-    ulr: config.db,
-    collection: 'sessions'
-  })
+  const daStore = new MongoStore(config.db)
 
   console.log(daStore);
   app.use(session({
