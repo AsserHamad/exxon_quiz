@@ -136,8 +136,8 @@ body{
   padding:5% 0%;
   border:none;
   }
-  @keyframes mult_transition {
-    100%{width:0%;font-size:2rem;}
+  @keyframes multi_transition {
+    100%{width:10%;font-size:2rem;border-radius: 12rem 0rem 0rem 12rem;}
   }
   #button_multi:hover{
   filter: drop-shadow(0 0px 15px #BF0426);

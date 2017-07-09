@@ -164,3 +164,9 @@ const mongoose = require('mongoose')
       }
     })
   }
+
+  exports.unacceptedUsers = (req, res) => {
+    User.findSafely({accepted: false}, (error, users) => {
+      res.json(users)
+    })
+  }
