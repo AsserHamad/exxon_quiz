@@ -29,7 +29,6 @@ $('document').ready(function(){
   })
   .fail((err) => {
     topScore = 0;
-    console.log('Your filthy non-existent top score is '+topScore+' with error '+err);
   })
 
   $("#submit_btnn").on('click',() => {
