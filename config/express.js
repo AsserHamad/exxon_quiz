@@ -33,9 +33,9 @@ module.exports = function(app, config) {
   }));
 
   app.use(session({
-    store: new MongoStore({
-    url: process.env.MONGOLAB_URI || config.db
-    }),
+    // store: new MongoStore({
+    // url: process.env.MONGOLAB_URI || config.db
+    // }),
 		saveUninitialized: true,
 		resave: true,
 		secret: config.app.sessionSecret
