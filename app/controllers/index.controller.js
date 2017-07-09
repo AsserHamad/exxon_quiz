@@ -21,7 +21,9 @@ exports.home = (req, res, next) => {
 };
 
 exports.listQuestions = (req, res , next) => {
-  Question.randomTen((questions) => {
+  Question.randomTen((error, questions) => {
+    if(error)
+      return res.status(500).json({error: error})
     res.json(questions);
   })
 }
