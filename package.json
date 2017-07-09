@@ -4,7 +4,7 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "preinstall": "rm -rf node_modules/*/.git",
+    "preinstall": "rm node_modules/connect-mongodb-session && rm  -rf node_modules/*/.git",
     "postinstall": "git clone https://github.com/mongodb-js/connect-mongodb-session.git && ln -s connect-mongodb-session node_modules/connect-mongodb-session",
     "start": "node app.js",
     "test": "cross-env NODE_ENV=test mocha --reporter spec app/tests",
