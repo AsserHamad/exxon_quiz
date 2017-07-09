@@ -4,7 +4,6 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "postinstall": "if cd node_modules/connect-mongodb-session; then echo hi; else git clone https://github.com/mongodb-js/connect-mongodb-session.git node_modules/connect-mongodb-session; fi",
     "start": "node app.js",
     "test": "cross-env NODE_ENV=test mocha --reporter spec app/tests",
     "test:coverage": "nyc npm test",
