@@ -1,7 +1,7 @@
 const express = require('express'),
       glob = require('glob'),
       session = require('express-session'),
-      MongoStore = require('connect-mongo')(session),
+      MongoDBStore = require('connect-mongodb-session')(session),
       passport = require('passport'),
       favicon = require('serve-favicon'),
       logger = require('morgan'),
@@ -34,8 +34,9 @@ module.exports = function(app, config, mongoose) {
   console.log('before the session');
 
   app.use(session({
-    store: new MongoStore({
-      mongooseConnection: mongoose.connections[0]
+    store: new MongoDBStore({
+      uri: config.db,
+      collection: 'mySessions'
     }),
 		saveUninitialized: true,
 		resave: true,
