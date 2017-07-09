@@ -34,9 +34,9 @@ module.exports = function(app, config, db) {
   console.log('before the session');
 
   app.use(session({
-    // store: new MongoStore({
-    //   mongooseConnection: db
-    // }),
+    store: new MongoStore({
+      mongooseConnection: db.connection
+    }),
 		saveUninitialized: true,
 		resave: true,
 		secret: config.app.sessionSecret
