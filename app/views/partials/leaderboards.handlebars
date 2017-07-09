@@ -3,23 +3,18 @@
   var results
   $.get("/leaderboards")
     .done((res) => {
-      const count = res.count
-      const table = $("#table")
       var first = true;
-      for(let value of res.values) {
-        if(first){first=false;$("#allTimeTopScore").html(Math.floor(value.score));}
-        let tr  = $("<tr></tr>")
-
-        tr.append(`<td>${value.quizTaker.email}</td>`)
-        tr.append(`<td>${value.quizTaker.fullName}</td>`)
-        tr.append(`<td>${Math.floor(value.score)}</td>`)
-        table.append(tr);
+      for(var i=0;i<5;i++) {
+        if(first){first=false;$("#allTimeTopScore").html(Math.floor(res.values[i].score));}
+        console.log(res.values[i]);
+        $("#name_"+i).html(res.values[i].quizTaker.fullName);
+        $("#score_"+i).html(Math.floor(res.values[i].score));
       }
     })
 
 </script>
 
-<div align="center" class="table">
+<!-- <div align="center" class="table">
 <table class="responstable" id="table">
 
 <tr>
@@ -28,4 +23,4 @@
  <th align="center">Score</th>
 </tr>
 
- </table>
+ </table> -->

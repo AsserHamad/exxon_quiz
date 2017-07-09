@@ -197,12 +197,23 @@ a {
 
 ::-webkit-scrollbar {
   background-color: rgba(5,4,2,0.1);
-    width: 8px;
+    width: 0px;
   opacity:0.5;
     //border-radius: 70px;
 }
 
-
+.reg_selected{
+  font-size:130%;
+  color:white;
+  animation: glow_text 2s ease infinite;
+  transform:translateY(-20%);
+  transition-duration:0.3s;
+}
+.reg_unselected{
+  font-size:130%;
+  color:rgba(255,255,255,0.3);
+  transition-duration:0.3s;
+}
 
 /* Track */
 ::-webkit-scrollbar-track {

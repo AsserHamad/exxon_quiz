@@ -49,11 +49,30 @@ body{
   width:30%;
 }
 #trophy{
-  left:75%;
+  left:175%;
   top:5%;
   font-size: 170%;
   position:fixed;
   color:white;
+}
+@keyframes show_leaderboards {
+  0%{left:175%;}
+  100%{left:75%};
+}
+.leadz{
+  margin-bottom:15%;
+}
+.numbers{
+  border-radius:50rem;
+  padding:2% 5%;
+  background-color:white;
+  color:black;
+  margin-right:2%;
+}
+.names,.scores{
+  font-size:60%;
+  margin-right:7%;
+  transform:translateY(-15%);
 }
 #countdown{
   position:fixed;
@@ -161,18 +180,18 @@ body{
 #logout{
   text-decoration: none;
   position:fixed;
-  font-size:150%;
+  font-size:100%;
   color:white;
-  top:85%;
-  left:45%;
+  top:80%;
+  left:5%;
   transition-duration:0.3s;
-  padding:1% 2%;
+  padding:2% 1%;
   border-radius:50rem;
   background-color:#00B2EE;
 
 }
 #logout:hover{
-  font-size: 200%;
+  font-size: 150%;
   transform:translate(-1rem,-0.5rem);
 }
 #admin{
