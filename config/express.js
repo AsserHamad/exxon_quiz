@@ -11,7 +11,7 @@ const express = require('express'),
       methodOverride = require('method-override'),
       exphbs  = require('express-handlebars');
 
-module.exports = function(app, config, mongoose) {
+module.exports = function(app, config, db) {
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
   app.locals.ENV_DEVELOPMENT = env == 'development';
@@ -33,7 +33,7 @@ module.exports = function(app, config, mongoose) {
 
   app.use(session({
     store: new MongoStore({
-      mongooseConnection: mongoose.connection,
+      mongooseConnection: db.connection,
       collection: 'sessions'
     }),
 		saveUninitialized: true,
