@@ -1,7 +1,7 @@
 const express = require('express'),
       glob = require('glob'),
       session = require('express-session'),
-      MongoStore = require('connect-mongo')(session),
+      MongoDBStore = require('connect-mongodb-session')(session),
       passport = require('passport'),
       favicon = require('serve-favicon'),
       logger = require('morgan'),
@@ -11,7 +11,7 @@ const express = require('express'),
       methodOverride = require('method-override'),
       exphbs  = require('express-handlebars');
 
-module.exports = function(app, config) {
+module.exports = function(app, config, mongoose) {
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
   app.locals.ENV_DEVELOPMENT = env == 'development';
@@ -31,18 +31,25 @@ module.exports = function(app, config) {
     extended: true
   }));
 
+  console.log('before the session');
+
   app.use(session({
-    store: new MongoStore({
-      url: config.db
+    store: new MongoDBStore({
+      uri: config.db,
+      collection: 'mySessions'
     }),
 		saveUninitialized: true,
 		resave: true,
 		secret: config.app.sessionSecret
 	}));
 
+
+  console.log('after the session');
+
   app.use(passport.initialize());
   app.use(passport.session());
 
+  app.use(cookieParser());
   app.use(compress());
   app.use(express.static(config.root + '/public'));
   app.use(methodOverride());

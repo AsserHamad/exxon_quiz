@@ -3,7 +3,7 @@
   glob = require('glob'),
   mongoose = require('mongoose')
 
-mongoose.connect(config.db);
+var db1 = mongoose.connect(config.db);
 
 var db = mongoose.connection;
 db.on('error', function() {
@@ -17,7 +17,7 @@ models.forEach(function(model) {
 var app = express();
 
 require('./config/passport')(); // Initialize passport
-require('./config/express')(app, config); // Initialize express
+require('./config/express')(app, config, mongoose); // Initialize express
 
 app.listen(config.port, function() {
   console.log('Express server listening on port ' + config.port);
