@@ -27,8 +27,8 @@ $('document').ready(function(){
   });
   $.get('/questions').done((res) => {
     questions=(res.length>=10)?res:alert("Not enough questions yet :/ the quiz is unplayable now");
-    $("#button_single").html();
-    $("#button_multi").html();
+    $("#button_single").html("");
+    $("#button_multi").html("");
   })
   $.get('/users/'+user._id+'/topscore')
   .done((res) => {
