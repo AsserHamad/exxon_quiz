@@ -31,6 +31,8 @@ module.exports = function(app, config, db) {
     extended: true
   }));
 
+  console.log('before the session');
+
   app.use(session({
     store: new MongoStore({
       mongooseConnection: db
@@ -39,6 +41,9 @@ module.exports = function(app, config, db) {
 		resave: true,
 		secret: config.app.sessionSecret
 	}));
+
+
+  console.log('after the session');
 
   app.use(passport.initialize());
   app.use(passport.session());

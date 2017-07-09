@@ -1,6 +1,7 @@
 const Question = require('mongoose').model('Question');
 
 exports.main = (req, res, next) => {
+  console.log('in index');
   if(req.user && req.user.accepted)
     return res.redirect('/home')
   res.render('index', {
