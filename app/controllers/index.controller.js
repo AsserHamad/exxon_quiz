@@ -27,3 +27,9 @@ exports.listQuestions = (req, res , next) => {
     res.json(questions);
   })
 }
+
+exports.test = (req, res) => {
+  res.render('socket', {
+    layout:false,
+  });
+}
