@@ -4,8 +4,7 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "first": "mv connect-mongodb-session node_modules",
-    "start": "npm run first && node app.js",
+    "start": "node app.js",
     "test": "cross-env NODE_ENV=test mocha --reporter spec app/tests",
     "test:coverage": "nyc npm test",
     "test:unit": "mocha --recursive test/middleware test/models test/routes",
